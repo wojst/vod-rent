@@ -19,7 +19,7 @@ class MoviesActorsTransferSeeder extends Seeder
         $rows = explode("\n", $data);
 
         foreach ($rows as $row) {
-            $values = str_getcsv($row);
+            $values = str_getcsv($row, ';');
 
             // Dodawanie rekordu do tabeli movies
             DB::table('movies_actors_transfers')->insert([
