@@ -80,68 +80,34 @@
         </button>
     </div><br><br>
 
-    <div class="container" id="wycieczki">
+    <div class="container" id="filmy">
         <h2 style="text-align: center">NASZE HITY FILMOWE</h3>
-            <br>
-        <div class="row">
-          <div class="col-md-6 col-lg-6 col-xl-3">
-            <div class="card">
-                <img src="img/movies/godfather.jpg" class="card-img-top" alt="obr1">
-                <div class="card-body">
-                  <h4 class="card-title">Ojciec Chrzestny</h4>
-                  <p class="card-text">Opowieść o nowojorskiej rodzinie mafijnej. Starzejący się Don Corleone pragnie przekazać władzę swojemu synowi.</p>
-                  <p class="card-text">Obsada: Marlon Brando, Al Pacino</p>
-                  <p class="card-text">Reżyser: Francis Ford Coppola</p>
-                  <p class="card-text">Gatunek: Gangsterski </p>
-                  <p class="card-text">1972</p>
-                  <a href="#" class="btn btn-primary">Wypożycz</a>
+        <br>
+        <div class="row align-items-stretch">
+            @foreach($movies as $movie)
+            <div class="col-md-6 col-lg-6 col-xl-3 d-flex">
+                <div class="card flex-fill">
+                    <img src="{{ $movie->img_path }}" class="card-img-top" alt="obr1">
+                    <div class="card-body d-flex flex-column">
+                        <h4 class="card-title">{{ $movie->title }}</h4>
+                        <p class="card-text h-100">{{ $movie->description }}</p>
+                        <p class="card-text">Obsada:
+                            @php
+                                $actors = $movie->actors->pluck('actor_name')->toArray();
+                                echo implode(', ', $actors);
+                            @endphp
+                        </p>
+                        <p class="card-text">Reżyser: {{ $movie->director }}</p>
+                        <p class="card-text">Gatunek: {{  $movie->category->category_name }}</p>
+                        <p class="card-text">{{ $movie->release_year }}</p>
+                        <a href="#" class="btn btn-primary">Wypożycz</a>
+                    </div>
                 </div>
-              </div>
-          </div>
-          <div class="col-md-6 col-lg-6 col-xl-3">
-            <div class="card" >
-                <img src="img/movies/savingprivateryan.jpg" class="card-img-top" alt="obr2">
-                <div class="card-body">
-                  <h4 class="card-title">Szeregowiec Ryan</h4>
-                  <p class="card-text">W poszukiwaniu zaginionego szeregowca wysłany zostaje doborowy oddział żołnierzy. Czy uda się im wykonać zadanie?</p>
-                  <p class="card-text">Obsada: Tom Hanks, Matt Damon</p>
-                  <p class="card-text">Reżyser: Steven Spielberg </p>
-                  <p class="card-text">Gatunek: Wojenny </p>
-                  <p class="card-text">1998</p>
-                  <a href="#" class="btn btn-primary">Wypożycz</a>
-                </div>
-              </div>
-          </div>
-          <div class="col-md-6 col-lg-6 col-xl-3">
-            <div class="card" >
-                <img src="img/movies/fightclub.jpg" class="card-img-top" alt="obr3">
-                <div class="card-body">
-                  <h4 class="card-title">Podziemny Krąg</h4>
-                  <p class="card-text">Cierpiący na bezsenność mężczyzna poznaje gardzącego konsumpcyjnym stylem życia Tylera Durdena, który jest jego zupełnym przeciwieństwem.</p>
-                  <p class="card-text">Obsada: Brad Pitt, Edward Norton</p>
-                  <p class="card-text">Reżyser: David Fincher </p>
-                  <p class="card-text">Gatunek: Thriller </p>
-                  <p class="card-text">1999</p>
-                  <a href="#" class="btn btn-primary">Wypożycz</a>
-                </div>
-              </div>
-          </div>
-          <div class="col-md-6 col-lg-6 col-xl-3">
-            <div class="card" >
-                <img src="img/movies/gladiator.jpg" class="card-img-top" alt="obr4">
-                <div class="card-body">
-                    <h4 class="card-title">Gladiator</h4>
-                    <p class="card-text">Generał Maximus - prawa ręka cesarza, szczęśliwy mąż i ojciec - w jednej chwili traci wszystko. Jako niewolnik-gladiator musi walczyć na arenie o przeżycie.</p>
-                    <p class="card-text">Obsada: Russell Crowe, Joaquin Pheonix</p>
-                    <p class="card-text">Reżyser: Ridley Scott</p>
-                    <p class="card-text">Gatunek: Dramat </p>
-                    <p class="card-text">2000</p>
-                    <a href="#" class="btn btn-primary">Wypożycz</a>
-                </div>
-              </div>
-          </div>
+            </div>
+            @endforeach
         </div>
     </div>
+
 
     <br><br>
 
