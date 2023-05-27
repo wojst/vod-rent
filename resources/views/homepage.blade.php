@@ -1,84 +1,13 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>RentVOD</title>
-    <link href="css/bootstrap.css" rel="stylesheet">
-
-
+    @include('shared.header')
   </head>
   <body>
 
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-          <a class="navbar-brand" href=""><b>RentVOD</b></a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="{{ url('/ourmovies') }}">Filmy</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#cennik">Cennik</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#kontakt">Kontakt</a>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Dropdown
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
-                  <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="#">Something else here</a></li>
-                </ul>
-               </li>
-            </ul>
-                  <a href="#" class="btn btn-outline-success">Sprawdź swoje konto</a>
-           </div>
-        </div>
-    </nav>
+    @include('shared.navbar')
 
-    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
-        <div class="carousel-indicators">
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-        </div>
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img src="img/carousel/ticket.jpg" class="d-block w-100" alt="carousel1">
-            <div class="carousel-caption d-none d-md-block">
-              <h3>Najlepsze filmy bez wychodzenia z domu!</h3>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <img src="img/carousel/watching.jpg" class="d-block w-100" alt="carousel2">
-            <div class="carousel-caption d-none d-md-block">
-              <h3>Daj się porwać filmowym emocjom!</h3>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <img src="img/carousel/popcorn.jpg" class="d-block w-100" alt="carousel3">
-            <div class="carousel-caption d-none d-md-block">
-              <h3>Szykuj popcorn!</h3>
-            </div>
-          </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-    </div><br><br>
+    @include('shared.carousel')
 
     <div class="container" id="filmy">
         <h2 style="text-align: center">NASZE HITY FILMOWE</h3>
@@ -108,7 +37,6 @@
         </div>
     </div>
 
-
     <br><br>
 
     <div class="d-grid gap-2 col-6 mx-auto">
@@ -117,48 +45,9 @@
 
     <br><br>
 
-    <div class="container text-center" id="cennik"  class="mx-auto mx-sm-auto mx-md-auto mx-lg-auto">
-        <table class="table table-striped">
-      <h1 style="text-align: left">Cennik</h1>
-          <thead>
-            <tr>
-              <th scope="col">Czas wypożyczenia</th>
-              <th scope="col">Cena</th>
-              <th scope="col">Zniżka z kartą stałego klienta</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="col">24 godzin</th>
-              <th scope="col">15 zł</th>
-              <th scope="col">10%</th>
-            </tr>
-          </tbody>
-        </table>
+    @include('shared.pricelist')
 
-        <p>Opłatę proszę dokonać na numer konta: <b>00 0000 0000 0000 0000 0000 0000</b></p>
-        <p>W tytule przelewu podać ID zamówienia i email</p>
-    </div>
-
-    <br><br>
-
-    <div id="kontakt" class="container mt-5">
-        <h2>Kontakt</h2>
-        <form>
-          <div class="form-group">
-            <label for="email">E-mail:</label>
-            <input type="email" class="form-control" id="email" placeholder="Wprowadź adres e-mail" required>
-          </div>
-          <div class="form-group">
-            <label for="question">Pytanie:</label>
-            <textarea class="form-control" id="question" placeholder="Wprowadź pytanie" rows="5" required></textarea>
-          </div>
-          <br>
-          <button type="submit" class="btn btn-primary">Wyślij</button>
-        </form>
-    </div>
-
-      <br><br>
+    @include('shared.contactform')
 
     <script src="js/bootstrap.bundle.js"></script>
   </body>
