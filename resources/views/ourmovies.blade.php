@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
+    <title>RentVOD</title>
     <link href="css/bootstrap.css" rel="stylesheet">
 
 
@@ -19,7 +19,7 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="#">Filmy</a>
+                <a class="nav-link" aria-current="page" href="{{ url('/ourmovies') }}">Filmy</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#cennik">Cennik</a>
@@ -130,6 +130,27 @@
                 </div>
             @endforeach
         </div>
+
+        <div class="d-flex justify-content-center mt-4">
+            <ul class="pagination">
+                <li class="page-item {{ $movies->previousPageUrl() ? '' : 'disabled' }}">
+                    <a class="page-link" href="{{ $movies->previousPageUrl() }}" aria-label="Poprzednia">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                @foreach ($movies->getUrlRange(1, $movies->lastPage()) as $page => $url)
+                    <li class="page-item {{ $page == $movies->currentPage() ? 'active' : '' }}">
+                        <a class="page-link" href="{{ $url }}">{{ $page }}</a>
+                    </li>
+                @endforeach
+                <li class="page-item {{ $movies->nextPageUrl() ? '' : 'disabled' }}">
+                    <a class="page-link" href="{{ $movies->nextPageUrl() }}" aria-label="Następna">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
     </div>
 
 
