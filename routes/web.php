@@ -18,5 +18,13 @@ use App\Http\Controllers\HomeController;
 //     return view('welcome');
 // });
 
-Route::get('/', [HomeController::class, 'welcome']);
+Route::get('/', [HomeController::class, 'homepage'])->name('homepage');
+
+
+Route::get('/ourmovies', [HomeController::class, 'ourMovies'])->name('ourmovies');
+Route::get('/searchMovies', [HomeController::class, 'searchMovies'])->name('searchMovies');
+
+
+
+
 
