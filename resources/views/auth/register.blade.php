@@ -3,7 +3,6 @@
         @include('shared.header')
     </head>
     <body>
-
         @include('shared.navbar4loginpanel')
 
         <section class="vh-100">
@@ -11,17 +10,30 @@
                 <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
                     <h1 class="text-center">Panel rejestracji</h1>
                     <br><br>
-                    <form>
+                    <form action="{{ route('register') }}" method="POST">
+                    @csrf
                       <!-- Email input -->
                       <div class="form-outline mb-4">
-                        <input type="email" id="form1Example13" class="form-control form-control-lg" />
-                        <label class="form-label" for="form1Example13">Email</label>
+                          <input type="text" id="name" name="name" class="form-control form-control-lg" />
+                          <label class="form-label" for="name">Name</label>
+                      </div>
+
+                      <!-- Email input -->
+                      <div class="form-outline mb-4">
+                        <input type="email" id="email" name="email" class="form-control form-control-lg" />
+                        <label class="form-label" for="email">Email</label>
                       </div>
 
                       <!-- Password input -->
                       <div class="form-outline mb-4">
-                        <input type="password" id="form1Example23" class="form-control form-control-lg" />
-                        <label class="form-label" for="form1Example23">Hasło</label>
+                        <input type="password" id="password" name="password" class="form-control form-control-lg" />
+                        <label class="form-label" for="password">Hasło</label>
+                      </div>
+
+                      {{-- Password confirm input --}}
+                      <div class="form-outline mb-4">
+                        <input type="password" id="password_confirmation" name="password_confirmation" class="form-control form-control-lg" />
+                        <label class="form-label" for="password_confirmation">Potwierdź hasło</label>
                       </div>
 
                       <div class="d-flex justify-content-around align-items-center mb-4">
@@ -30,15 +42,12 @@
 
                       <!-- Submit button -->
                       <div class="d-flex justify-content-around align-items-center" >
-                        <button type="submit" class="btn btn-primary btn-lg btn-block">Zarejestruj!</button>
+                        <button type="submit" name="register" class="btn btn-primary btn-lg btn-block">Zarejestruj!</button>
                       </div>
                     </form>
-
                 </div>
             </div>
-
         </section>
-
 
         <script src="js/bootstrap.bundle.js"></script>
     </body>

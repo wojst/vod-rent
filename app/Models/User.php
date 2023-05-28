@@ -10,4 +10,6 @@ class User extends Model
     use HasFactory;
 
     protected $primaryKey = 'user_id';
+
+    public $timestamps = false;
 }
