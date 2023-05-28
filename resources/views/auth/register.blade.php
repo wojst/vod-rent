@@ -34,6 +34,15 @@
                       <div class="form-outline mb-4">
                         <input type="password" id="password_confirmation" name="password_confirmation" class="form-control form-control-lg" />
                         <label class="form-label" for="password_confirmation">Potwierdź hasło</label>
+
+                        @error('password')
+                        <span class="text-danger">{{ $message }}</span>
+                        <br><br>
+                        @enderror
+                        @error('email')
+                        <span class="text-danger">{{ $message }}</span>
+                        <br><br>
+                        @enderror
                       </div>
 
                       <div class="d-flex justify-content-around align-items-center mb-4">
