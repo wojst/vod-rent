@@ -9,7 +9,7 @@
         <section class="vh-100">
             <div class="row d-flex align-items-center justify-content-center h-100">
                 <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
-                    <h1 class="text-center">Panel logowania</h1>
+                    <h1 class="text-center">Panel rejestracji</h1>
                     <br><br>
                     <form>
                       <!-- Email input -->
@@ -25,12 +25,12 @@
                       </div>
 
                       <div class="d-flex justify-content-around align-items-center mb-4">
-                        <p>Nie masz jeszcze konta? <a href="{{ route('register') }}">Zarejestruj się!</a></p>
+                        <p>Masz już konto? <a href="{{ route('login') }}">Zaloguj się!</a></p>
                       </div>
 
                       <!-- Submit button -->
                       <div class="d-flex justify-content-around align-items-center" >
-                        <button type="submit" class="btn btn-primary btn-lg btn-block">Zaloguj!</button>
+                        <button type="submit" class="btn btn-primary btn-lg btn-block">Zarejestruj!</button>
                       </div>
                     </form>
 
