@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +24,9 @@ Route::get('/', [HomeController::class, 'homepage'])->name('homepage');
 
 Route::get('/ourmovies', [HomeController::class, 'ourMovies'])->name('ourmovies');
 Route::get('/searchMovies', [HomeController::class, 'searchMovies'])->name('searchMovies');
+
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [AuthController::class, 'login']);
 
 
 

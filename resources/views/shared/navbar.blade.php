@@ -15,7 +15,7 @@
           <li class="nav-item">
             <a class="nav-link" href="#kontakt">Kontakt</a>
           </li>
-          <li class="nav-item dropdown">
+          {{-- <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Dropdown
             </a>
@@ -25,9 +25,9 @@
               <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" href="#">Something else here</a></li>
             </ul>
-           </li>
+           </li> --}}
         </ul>
-              <a href="#" class="btn btn-outline-success">Sprawdź swoje konto</a>
+              <a href="{{ route('login') }}" class="btn btn-outline-success">Zaloguj lub Zarejestruj się</a>
        </div>
     </div>
 </nav>
