@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +39,8 @@ Route::middleware(['auth'])->group(function () {
     ->name('logout');
 
     Route::get('/profile', [UserController::class, 'showProfile'])->name('profile');
+
+    Route::get('/make-payment', [PaymentController::class, 'makePayment'])->name('make-payment');
 
 
 });
