@@ -34,7 +34,7 @@
                             <p class="card-text">Gatunek: {{  $movie->category->category_name }}</p>
                             <p class="card-text">{{ $movie->release_year }}</p>
                             @if(Auth::check())
-                                <a href="{{ route('make-payment') }}" class="btn btn-primary">Wypożycz</a>
+                                <a href="{{ route('cart') }}" class="btn btn-primary">Wypożycz</a>
                             @else
                                 <a href="{{ route('login') }}" class="btn btn-primary">Zaloguj się, aby wypożyczyć</a>
                             @endif

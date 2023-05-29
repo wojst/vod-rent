@@ -10,12 +10,12 @@ class Movie extends Model
     use HasFactory;
 
     protected $table = 'movies';
-    protected $primaryKey = 'movie_id'; // Nazwa kolumny będącej kluczem głównym w tabeli movies
+    protected $primaryKey = 'movie_id';
 
     public function actors()
     {
         return $this->belongsToMany(Actor::class, 'movies_actors_transfer', 'movie_id', 'actor_id')
-            ->withPivot('actor_id', 'movie_id'); // Dodaj zdefiniowane kolumny pivot
+            ->withPivot('actor_id', 'movie_id');
     }
 
     public function category()

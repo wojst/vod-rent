@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\CartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,6 +40,8 @@ Route::middleware(['auth'])->group(function () {
     ->name('logout');
 
     Route::get('/profile', [UserController::class, 'showProfile'])->name('profile');
+
+    Route::get('/cart', [CartController::class, 'showCart'])->name('cart');
 
     Route::get('/make-payment', [PaymentController::class, 'makePayment'])->name('make-payment');
 
