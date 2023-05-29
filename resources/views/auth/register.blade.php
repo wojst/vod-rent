@@ -10,18 +10,21 @@
                 <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
                     <h1 class="text-center">Panel rejestracji</h1>
                     <br><br>
-                    <form action="{{ route('register') }}" method="POST">
-                    @csrf
+                    <form action="{{ route('register') }}" method="POST">@csrf
                       <!-- Email input -->
                       <div class="form-outline mb-4">
                           <input type="text" id="name" name="name" class="form-control form-control-lg" />
-                          <label class="form-label" for="name">Name</label>
+                          <label class="form-label" for="name">Nazwa użytkownika</label>
                       </div>
 
                       <!-- Email input -->
                       <div class="form-outline mb-4">
                         <input type="email" id="email" name="email" class="form-control form-control-lg" />
                         <label class="form-label" for="email">Email</label>
+                        @error('email')
+                        <span class="text-danger">{{ $message }}</span>
+                        <br><br>
+                        @enderror
                       </div>
 
                       <!-- Password input -->
@@ -39,10 +42,7 @@
                         <span class="text-danger">{{ $message }}</span>
                         <br><br>
                         @enderror
-                        @error('email')
-                        <span class="text-danger">{{ $message }}</span>
-                        <br><br>
-                        @enderror
+
                       </div>
 
                       <div class="d-flex justify-content-around align-items-center mb-4">

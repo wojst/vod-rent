@@ -52,7 +52,7 @@
                             <p class="card-text">Reżyser: {{ $movie->director }}</p>
                             <p class="card-text">Gatunek: {{ $movie->category->category_name }}</p>
                             <p class="card-text">{{ $movie->release_year }}</p>
-                            <a href="#" class="btn btn-primary">Wypożycz</a>
+                            <a href="{{ route('login') }}" class="btn btn-primary">Wypożycz</a>
                         </div>
                     </div>
                 </div>

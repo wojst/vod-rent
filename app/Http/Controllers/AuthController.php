@@ -36,7 +36,8 @@ class AuthController extends Controller
         } else {
             // Błędne dane logowania
             return back()->withErrors([
-                'email' => 'Podane dane logowania są nieprawidłowe.',
+                // 'email' => 'Podane dane logowania są nieprawidłowe.',
+                'login' => 'Nieprawidłowe dane logowania.',
             ]);
         }
     }
@@ -46,8 +47,11 @@ class AuthController extends Controller
         $request->validate([
             'name' => 'required|string',
             'email' => 'required|string|email|unique:users',
-            'password' => 'required|string|min:8',
-            'password_confirmation' => 'required|string|min:8|same:password',
+            'password' => 'required|string|min:8|confirmed',
+        ], [
+            'email.unique' => 'Podany adres e-mail jest już zajęty.',
+            'password.confirmed' => 'Hasło i potwierdzenie hasła nie są identyczne.',
+            'password.min:8' => 'Hasło musi zawierać przynajmniej 8 znaków.',
         ]);
 
         // Tworzenie nowego użytkownika

@@ -27,7 +27,11 @@
             </ul>
            </li> --}}
         </ul>
-              <a href="{{ route('login') }}" class="btn btn-outline-success">Zaloguj lub Zarejestruj się</a>
+        @if (Auth::check())
+            <a href="{{ route('logout') }}" class="btn btn-outline-success">Wyloguj się</a>
+        @else
+            <a href="{{ route('login') }}" class="btn btn-outline-success">Zaloguj lub Zarejestruj się</a>
+        @endif
        </div>
     </div>
 </nav>
