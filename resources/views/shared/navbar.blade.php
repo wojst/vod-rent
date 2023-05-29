@@ -6,15 +6,15 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="{{ url('/ourmovies') }}">Filmy</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#cennik">Cennik</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#kontakt">Kontakt</a>
-          </li>
+            <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="{{ url('/ourmovies') }}">Filmy</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#cennik">Cennik</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#kontakt">Kontakt</a>
+            </li>
           {{-- <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Dropdown
@@ -26,6 +26,9 @@
               <li><a class="dropdown-item" href="#">Something else here</a></li>
             </ul>
            </li> --}}
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('profile') }}">Profil</a>
+            </li>
         </ul>
         @if (Auth::check())
             <form action="{{ route('logout') }}" method="POST">@csrf

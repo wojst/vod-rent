@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +36,8 @@ Route::middleware(['auth'])->group(function () {
     // tutaj inne trasy dostępne dla zalogowanych użytkowników
     Route::post('/logout', [AuthController::class, 'logout'])
     ->name('logout');
+
+    Route::get('/profile', [UserController::class, 'showProfile'])->name('profile');
 
 
 });
