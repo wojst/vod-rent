@@ -21,14 +21,23 @@ use App\Http\Controllers\AuthController;
 
 Route::get('/', [HomeController::class, 'homepage'])->name('homepage');
 
-
 Route::get('/ourmovies', [HomeController::class, 'ourMovies'])->name('ourmovies');
 Route::get('/searchMovies', [HomeController::class, 'searchMovies'])->name('searchMovies');
 
-Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
-Route::post('/login', [AuthController::class, 'login']);
-Route::get('/register', [AuthController::class, 'showRegistrationForm'])->name('register');
-Route::post('/register', [AuthController::class, 'register']);
+Route::middleware(['guest'])->group(function () {
+    Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+    Route::post('/login', [AuthController::class, 'login']);
+    Route::get('/register', [AuthController::class, 'showRegistrationForm'])->name('register');
+    Route::post('/register', [AuthController::class, 'register']);
+});
+
+Route::middleware(['auth'])->group(function () {
+    // tutaj inne trasy dostępne dla zalogowanych użytkowników
+    Route::post('/logout', [AuthController::class, 'logout'])
+    ->name('logout');
+
+
+});
 
 
 

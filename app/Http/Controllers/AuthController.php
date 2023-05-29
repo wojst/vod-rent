@@ -42,6 +42,12 @@ class AuthController extends Controller
         }
     }
 
+    public function logout()
+    {
+        Auth::logout();
+        return redirect()->route('homepage')->with('success', 'Wylogowano pomyślnie.');
+    }
+
     public function register(Request $request)
     {
         $request->validate([

@@ -28,10 +28,13 @@
            </li> --}}
         </ul>
         @if (Auth::check())
-            <a href="{{ route('logout') }}" class="btn btn-outline-success">Wyloguj się</a>
+            <form action="{{ route('logout') }}" method="POST">@csrf
+                <button type="submit" class="btn btn-outline-success">Wyloguj się</button>
+            </form>
         @else
             <a href="{{ route('login') }}" class="btn btn-outline-success">Zaloguj lub Zarejestruj się</a>
         @endif
+
        </div>
     </div>
 </nav>
