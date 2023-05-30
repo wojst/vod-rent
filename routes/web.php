@@ -7,20 +7,6 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\CartController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
-
-// Route::get('/', function () {
-//     return view('welcome');
-// });
 
 Route::get('/', [HomeController::class, 'homepage'])->name('homepage');
 
@@ -41,7 +27,10 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/profile', [UserController::class, 'showProfile'])->name('profile');
 
-    Route::get('/cart', [CartController::class, 'showCart'])->name('cart');
+    Route::get('/summary/{movie_id}', [CartController::class, 'summary'])->name('summary');
+
+    Route::get('/payment', [CartController::class, 'payment'])->name('payment');
+
 
     Route::get('/make-payment', [PaymentController::class, 'makePayment'])->name('make-payment');
 

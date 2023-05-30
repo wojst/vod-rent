@@ -20,7 +20,7 @@
                 @foreach($movies as $movie)
                 <div class="col-md-6 col-lg-6 col-xl-3 d-flex">
                     <div class="card flex-fill">
-                        <img src="{{ $movie->img_path }}" class="card-img-top" alt="obr1">
+                        <img src="{{ asset($movie->img_path) }}" class="card-img-top" alt="obr1">
                         <div class="card-body d-flex flex-column">
                             <h4 class="card-title">{{ $movie->title }}</h4>
                             <p class="card-text h-100">{{ $movie->description }}</p>
@@ -34,7 +34,7 @@
                             <p class="card-text">Gatunek: {{  $movie->category->category_name }}</p>
                             <p class="card-text">{{ $movie->release_year }}</p>
                             @if(Auth::check())
-                                <a href="{{ route('cart') }}" class="btn btn-primary">Wypożycz</a>
+                                <a href="{{ route('summary', ['movie_id' => $movie->movie_id]) }}" class="btn btn-primary">Wypożycz</a>
                             @else
                                 <a href="{{ route('login') }}" class="btn btn-primary">Zaloguj się, aby wypożyczyć</a>
                             @endif

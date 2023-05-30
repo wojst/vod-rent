@@ -22,13 +22,6 @@
                     <a class="nav-link" href="{{ route('login') }}">Profil</a>
                 @endif
             </li>
-            <li class="nav-item">
-                @if (Auth::check())
-                    <a class="nav-link" href="{{ route('cart') }}">Koszyk</a>
-                @else
-                    <a class="nav-link" href="{{ route('login') }}">Koszyk</a>
-                @endif
-            </li>
         </ul>
         @if (Auth::check())
             <form action="{{ route('logout') }}" method="POST">@csrf

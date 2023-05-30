@@ -2,14 +2,27 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Movie;
 use Illuminate\Http\Request;
+use App\Models\Movie;
+use Illuminate\Support\Facades\Session;
 
 class CartController extends Controller
 {
-    public function showCart()
+
+    public function summary($movie_id)
     {
-        $movies = Movie::with('category')->get();
-        return view('cart', ['movies' => $movies]);
+        $movie = Movie::find($movie_id);
+
+        return view('summary', compact('movie'));
     }
+
+    public function payment()
+    {
+        // Przekierowanie do integracji płatności (np. Stripe)
+        // kod odpowiedzialny za przekierowanie do integracji płatności
+
+        // Przykład przekierowania do Stripe Checkout
+        return redirect()->away('https://checkout.stripe.com/...');
+    }
+
 }
