@@ -16,13 +16,9 @@ class CartController extends Controller
         return view('summary', compact('movie'));
     }
 
-    public function payment()
+    public function showBlikPayment()
     {
-        // Przekierowanie do integracji płatności (np. Stripe)
-        // kod odpowiedzialny za przekierowanie do integracji płatności
-
-        // Przykład przekierowania do Stripe Checkout
-        return redirect()->away('https://checkout.stripe.com/...');
+        return view('blik-payment');
     }
 
 }

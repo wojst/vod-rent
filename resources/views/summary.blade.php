@@ -40,9 +40,13 @@
 
                     <div class="card text-center">
                         <div class="card-body align-items-center">
-                            <a href="{{ route('payment') }}" class="btn btn-warning btn-block btn-lg">Przejdź do płatności</a>
+                            <a href="" class="btn btn-warning btn-block btn-lg">Przejdź do płatności</a>
+                        </div>
+                        <div class="card-body align-items-center">
+                            <a href="{{ route('blik-payment') }}" class="btn btn-warning btn-block btn-lg">BLIK</a>
                         </div>
                     </div>
+
 
                     <div class="text-center mt-4">
                         <a href="{{ route('homepage') }}" class="btn btn-primary">Powrót do strony głównej</a>
@@ -60,12 +64,6 @@
                 document.getElementById('movie-price').textContent = price;
             });
         </script>
-
-
-
-
-
-
 
 
         <script src="js/bootstrap.bundle.js"></script>

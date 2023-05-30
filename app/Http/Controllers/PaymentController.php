@@ -6,8 +6,6 @@ use Illuminate\Http\Request;
 
 class PaymentController extends Controller
 {
-    public function makePayment()
-    {
-        return view('make-payment');
-    }
+
+
 }
