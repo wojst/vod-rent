@@ -4,6 +4,12 @@
     @include('shared.header')
 </head>
 <body>
+    @if(Session::has('error'))
+        <div class="alert alert-danger" role="alert">
+            {{ Session::get('error') }}
+            Kod blik jest niepoprawny. Spróbuj jeszcze raz.
+        </div>
+    @endif
     <div class="container h-100 py-5">
         <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col-10">

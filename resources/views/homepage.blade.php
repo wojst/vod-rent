@@ -11,6 +11,14 @@
         </div>
     @endif
 
+    @if(Session::has('success'))
+        <div class="alert alert-success" role="alert">
+            {{ Session::get('success') }}
+            Twój 3-znakowy kod do wprowadzenia w naszej platformie streamingowej: <strong>{{ Session::get('transaction_code') }}</strong>
+        </div>
+    @endif
+
+
         @include('shared.carousel')
 
         <div class="container" id="filmy">

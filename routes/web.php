@@ -30,6 +30,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/summary/{movie_id}', [CartController::class, 'summary'])->name('summary');
 
     Route::get('/blik-payment', [CartController::class, 'showBlikPayment'])->name('blik-payment');
+    Route::post('/process-blik-payment', [CartController::class, 'processBlikPayment'])->name('process-blik-payment');
+
 
 
 
