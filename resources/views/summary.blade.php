@@ -37,11 +37,11 @@
                     </div>
 
                     <div class="card text-center">
-                        {{-- <div class="card-body align-items-center">
-                            <a href="" class="btn btn-warning btn-block btn-lg">Przejdź do płatności</a>
-                        </div> --}}
                         <div class="card-body align-items-center">
-                            <a href="{{ route('blik-payment') }}" class="btn btn-warning btn-block btn-lg">BLIK</a>
+                            <a href="" class="btn btn-warning btn-block btn-lg">Przejdź do płatności</a>
+                        </div>
+                        <div class="card-body align-items-center">
+                            <a href="{{ route('blik-payment', ['movie_id' => $movie->movie_id]) }}" class="btn btn-warning btn-block btn-lg">BLIK</a>
                         </div>
                     </div>
 
@@ -53,7 +53,7 @@
             </div>
         </div>
 
-        <script>
+        {{-- <script>
             // Obsługa zmiany czasu wypożyczenia
             document.getElementById('rental_duration').addEventListener('change', function() {
                 var duration = this.value;
@@ -61,7 +61,7 @@
 
                 document.getElementById('movie-price').textContent = price;
             });
-        </script>
+        </script> --}}
 
 
         <script src="js/bootstrap.bundle.js"></script>

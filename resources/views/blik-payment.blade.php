@@ -20,11 +20,14 @@
                 <div class="card rounded-3 mb-4">
                     <div class="card-body">
                         <!-- Tutaj umieść formularz płatności BLIK -->
-                        <form action="{{ route('process-blik-payment') }}" method="POST">
+                        <form action="{{ route('process-blik-payment', ['movie_id' => $movie_id]) }}" method="POST">
                             @csrf
                             <div class="mb-3">
                                 <label for="blik-code" class="form-label">Kod BLIK</label>
                                 <input type="text" class="form-control" id="blik-code" name="blik_code" required>
+                                @isset($movie)
+                                    <input type="hidden" name="movie_id" value="{{ $movie->movie_id }}">
+                                @endisset
                             </div>
                             <button type="submit" class="btn btn-primary">Zatwierdź płatność</button>
                         </form>
