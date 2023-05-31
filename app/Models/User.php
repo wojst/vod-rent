@@ -44,4 +44,12 @@ class User extends Model implements Authenticatable
     {
         return null; // Zwracamy null, jeśli nie używamy remember_token
     }
+
+
+
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
 }

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Movie;
 use Illuminate\Support\Facades\Session;
 use App\Models\Order;
+use Illuminate\Support\Facades\DB;
 
 class CartController extends Controller
 {
@@ -48,6 +49,16 @@ class CartController extends Controller
                     'cost' => $movie->price,
                     'code' => $transactionCode
                 ]);
+
+                // Zwiększanie liczby zamówień użytkownika
+                DB::table('users')
+                ->where('user_id', auth()->user()->user_id)
+                ->increment('orders_count');
+
+                // Zwiększanie wartości rentals_count filmu
+                DB::table('movies')
+                    ->where('movie_id', $movie->movie_id)
+                    ->increment('rentals_count');
 
 
                 Session::flash('success', 'Płatność BLIK została pomyślnie przetworzona.');
