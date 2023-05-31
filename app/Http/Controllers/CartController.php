@@ -36,7 +36,7 @@ class CartController extends Controller
             Session::flash('success', 'Płatność BLIK została pomyślnie przetworzona.');
             Session::flash('transaction_code', $transactionCode);
 
-            return redirect()->route('homepage');
+            return redirect()->route('profile');
         } else {
             // Kod BLIK jest niepoprawny
             // Możesz przekierować użytkownika na stronę błędu lub wyświetlić odpowiednie komunikaty

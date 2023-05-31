@@ -11,14 +11,6 @@
         </div>
     @endif
 
-    @if(Session::has('success'))
-        <div class="alert alert-success" role="alert">
-            {{ Session::get('success') }}
-            Twój 3-znakowy kod do wprowadzenia w naszej platformie streamingowej: <strong>{{ Session::get('transaction_code') }}</strong>
-        </div>
-    @endif
-
-
         @include('shared.carousel')
 
         <div class="container" id="filmy">
@@ -41,6 +33,7 @@
                             <p class="card-text">Reżyser: {{ $movie->director }}</p>
                             <p class="card-text">Gatunek: {{  $movie->category->category_name }}</p>
                             <p class="card-text">{{ $movie->release_year }}</p>
+                            <h6 class="card-text">Cena: {{ $movie->price }} zł</h6>
                             @if(Auth::check())
                                 <a href="{{ route('summary', ['movie_id' => $movie->movie_id]) }}" class="btn btn-primary">Wypożycz</a>
                             @else

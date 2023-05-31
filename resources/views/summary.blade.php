@@ -8,7 +8,7 @@
             <div class="row d-flex justify-content-center align-items-center h-100">
                 <div class="col-10">
                     <div class="d-flex justify-content-center align-items-center mb-4">
-                        <h3 class="fw-normal mb-0 text-center">Podsumowanie</h3>
+                        <h1 class="text-center">Podsumowanie</h1>
                     </div>
 
                     <div class="card rounded-3 mb-4">
@@ -20,15 +20,13 @@
                                         <img src="{{ asset($movie->img_path) }}" alt="{{ $movie->title }}" class="rounded-3 img-fluid">
                                     </div>
                                     <div class="col-md-9">
-                                        <h5 class="card-title">{{ $movie->title }}</h5>
+                                        <h4 class="card-title">{{ $movie->title }}</h4>
                                         <p class="card-text">Gatunek: {{ $movie->category->category_name }}</p>
-                                        <p class="movie-price">Czas wypożyczenia:
-                                            <select name="rental_duration" id="rental_duration">
-                                                <option value="24">24 godziny</option>
-                                                <option value="48">48 godzin</option>
-                                            </select>
-                                        </p>
-                                        <p class="movie-price">Cena: <span id="movie-price"></span> zł</p>
+                                        <p class="movie-price">Czas wypożyczenia: wszystkie nasze filmy wypożyczane są na 24 godziny</p>
+                                        <br><br>
+                                        <h3 class="card-text">Koszt zakupu: {{ $movie->price }}</h3>
+                                        <br><br><br><br><br><br>
+                                        <p>Po udanej transakcji swój kod dostępu do filmu znajdziesz w swoim profilu. Miłego seansu!</p>
                                     </div>
                                 </div>
                             </div>
@@ -39,9 +37,9 @@
                     </div>
 
                     <div class="card text-center">
-                        <div class="card-body align-items-center">
+                        {{-- <div class="card-body align-items-center">
                             <a href="" class="btn btn-warning btn-block btn-lg">Przejdź do płatności</a>
-                        </div>
+                        </div> --}}
                         <div class="card-body align-items-center">
                             <a href="{{ route('blik-payment') }}" class="btn btn-warning btn-block btn-lg">BLIK</a>
                         </div>

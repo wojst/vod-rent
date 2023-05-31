@@ -52,6 +52,7 @@
                                 <p class="card-text">Reżyser: {{ $movie->director }}</p>
                                 <p class="card-text">Gatunek: {{ $movie->category->category_name }}</p>
                                 <p class="card-text">{{ $movie->release_year }}</p>
+                                <h6 class="card-text">Cena: {{ $movie->price }} zł</h6>
                                 @if(Auth::check())
                                     <a href="{{ route('summary', ['movie_id' => $movie->movie_id]) }}" class="btn btn-primary">Wypożycz</a>
                                 @else

@@ -6,6 +6,13 @@
     <body>
         @include('shared.navbar')
 
+        @if(Session::has('success'))
+            <div class="alert alert-success" role="alert">
+                {{ Session::get('success') }}
+                Twój 3-znakowy kod do wprowadzenia w naszej platformie streamingowej: <strong>{{ Session::get('transaction_code') }}</strong>
+            </div>
+        @endif
+
         <div class="user-profile">
             <h1 class="text-center">Profil użytkownika</h1>
             <div class="card">
