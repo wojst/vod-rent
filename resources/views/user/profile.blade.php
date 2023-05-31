@@ -41,6 +41,36 @@
                 </div>
               </div>
             </div>
+            <div class="card mt-4">
+                <div class="card-body">
+                    <h3 class="card-title">Zamówienia użytkownika</h3>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Numer zamówienia</th>
+                                <th>Tytuł filmu</th>
+                                <th>Cena</th>
+                                <th>Data zamówienia</th>
+                                <th>Data końca wypożyczenia</th>
+                                <th>Kod</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($orders->sortByDesc('rent_start') as $order)
+                                <tr>
+                                    <td>{{ $order->order_id }}</td>
+                                    <td>{{ $order->movie->title }}</td>
+                                    <td>{{ $order->cost }}</td>
+                                    <td>{{ $order->rent_start }}</td>
+                                    <td>{{ $order->rent_end }}</td>
+                                    <td>{{ $order->code }}</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
           </div>
 
 

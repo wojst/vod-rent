@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
+
 class User extends Model implements Authenticatable
 {
     use HasFactory, Notifiable;
@@ -50,6 +51,6 @@ class User extends Model implements Authenticatable
 
     public function orders()
     {
-        return $this->hasMany(Order::class);
+        return $this->hasMany(Order::class, 'user_id', 'user_id');
     }
 }

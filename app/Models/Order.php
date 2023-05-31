@@ -21,5 +21,16 @@ class Order extends Model
         return $this->hasMany(Order::class);
     }
 
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'user_id');
+    }
+
+    public function movie()
+    {
+        return $this->belongsTo(Movie::class, 'movie_id', 'movie_id');
+    }
+
+
 
 }
