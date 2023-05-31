@@ -55,6 +55,29 @@ class CartController extends Controller
                 ->where('user_id', auth()->user()->user_id)
                 ->increment('orders_count');
 
+                // Sprawdzenie liczby zamówień użytkownika
+                $userOrdersCount = DB::table('users')
+                ->where('user_id', auth()->user()->user_id)
+                ->value('orders_count');
+
+                // Aktualizacja wartości loyalty_cart
+                if ($userOrdersCount >= 10) {
+                    DB::table('users')
+                        ->where('user_id', auth()->user()->user_id)
+                        ->update(['loyalty_card' => true]);
+                }
+
+                // Sprawdzenie czy użytkownik ma kartę stałego klienta
+                $userHasLoyaltyCard = DB::table('users')
+                ->where('user_id', auth()->user()->user_id)
+                ->value('loyalty_card');
+
+                // Obliczanie 10% zniżki, jeśli użytkownik ma kartę stałego klienta
+                if ($userHasLoyaltyCard) {
+                    $discount = $movie->price * 0.1;
+                    $order->cost -= $discount;
+                }
+
                 // Zwiększanie wartości rentals_count filmu
                 DB::table('movies')
                     ->where('movie_id', $movie->movie_id)

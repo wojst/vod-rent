@@ -24,7 +24,7 @@
                                         <p class="card-text">Gatunek: {{ $movie->category->category_name }}</p>
                                         <p class="movie-price">Czas wypożyczenia: wszystkie nasze filmy wypożyczane są na 24 godziny</p>
                                         <br><br>
-                                        <h3 class="card-text">Koszt zakupu: {{ $movie->price }}</h3>
+                                        <h3 class="card-text">Koszt zakupu: @if(auth()->user()->loyalty_card) {{ number_format($movie->price * 0.9, 2) }} @else {{ number_format($movie->price, 2) }} @endif zł</h3>
                                         <br><br><br><br><br><br>
                                         <p>Po udanej transakcji swój kod dostępu do filmu znajdziesz w swoim profilu. Miłego seansu!</p>
                                     </div>

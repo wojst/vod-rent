@@ -10,7 +10,7 @@
         @include('shared.carousel')
 
         <div class="container" id="filmy">
-            <h2 style="text-align: center">NASZE HITY FILMOWE</h2>
+            <h2 style="text-align: center">NASZA BAZA FILMÓW</h2>
             <br>
 
             {{-- searching form --}}
