@@ -11,6 +11,9 @@ class Actor extends Model
 
     protected $table = 'actors';
     protected $primaryKey = 'actor_id'; // Nazwa kolumny będącej kluczem głównym w tabeli actors
+    protected $fillable = ['actor_name'];
+    public $timestamps = false;
+
 
     public function movies()
     {

@@ -8,6 +8,7 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ActorController;
 
 
 Route::get('/', [HomeController::class, 'homepage'])->name('homepage');
@@ -51,6 +52,16 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/categories/{id}/edit', [CategoryController::class, 'edit'])->name('categories.edit');
     Route::put('/categories/{id}', [CategoryController::class, 'update'])->name('categories.update');
     Route::delete('/categories/{id}', [CategoryController::class, 'destroy'])->name('categories.destroy');
+
+    //ADMIN AKTORZY
+
+    Route::get('/actors', [ActorController::class, 'index'])->name('actors.index');
+    Route::post('/actors', [ActorController::class, 'store'])->name('actors.store');
+    Route::delete('/actors/{id}', [ActorController::class, 'destroy'])->name('actors.destroy');
+    Route::get('/actors/{id}/edit', [ActorController::class, 'edit'])->name('actors.edit');
+    Route::put('/actors/{id}', [ActorController::class, 'update'])->name('actors.update');
+
+
 
 
 
