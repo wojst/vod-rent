@@ -33,10 +33,6 @@ class Movie extends Model
         return $this->hasMany(Order::class, 'movie_id', 'movie_id');
     }
 
-    public function actorsTransfer()
-    {
-        return $this->hasMany(MoviesActorsTransfer::class, 'movie_id')->cascadeDelete();
-    }
 
 }
 
