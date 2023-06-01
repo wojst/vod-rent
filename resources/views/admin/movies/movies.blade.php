@@ -25,7 +25,7 @@
 
                 <div class="row">
                     @foreach($actors as $actor)
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" name="actors[]" value="{{ $actor->actor_id }}" id="actor_{{ $actor->actor_id }}">
                                 <label class="form-check-label" for="actor_{{ $actor->actor_id }}">
