@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\MovieController;
+use App\Http\Controllers\CategoryController;
 
 
 Route::get('/', [HomeController::class, 'homepage'])->name('homepage');
@@ -33,17 +34,23 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/blik-payment/{movie_id}', [CartController::class, 'showBlikPayment'])->name('blik-payment');
     Route::post('/process-blik-payment', [CartController::class, 'processBlikPayment'])->name('process-blik-payment');
 
-
+    //ADMIN FILMY
 
     Route::get('/movies', [MovieController::class, 'index'])->name('movies.index');
     Route::post('/movies', [MovieController::class, 'store'])->name('movies.store');
-
     //edytowanie
     Route::get('/movies/{movie}/edit', [MovieController::class, 'edit'])->name('movies.edit');
     Route::put('/movies/{movie}', [MovieController::class, 'update'])->name('movies.update');
-
     //usuwanie
     Route::delete('/movies/{movie}', [MovieController::class, 'destroy'])->name('movies.destroy');
+
+    //ADMIN KATEGORIE
+
+    Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
+    Route::post('/categories', [CategoryController::class, 'store'])->name('categories.store');
+    Route::get('/categories/{id}/edit', [CategoryController::class, 'edit'])->name('categories.edit');
+    Route::put('/categories/{id}', [CategoryController::class, 'update'])->name('categories.update');
+    Route::delete('/categories/{id}', [CategoryController::class, 'destroy'])->name('categories.destroy');
 
 
 
