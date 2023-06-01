@@ -16,7 +16,7 @@ class MovieController extends Controller
         $actors = Actor::all();
 
 
-        return view('admin.movies', compact('movies', 'categories', 'actors'));
+        return view('admin.movies.movies', compact('movies', 'categories', 'actors'));
     }
 
 
@@ -32,7 +32,6 @@ class MovieController extends Controller
             'img_path' => $request->input('image'),
         ]);
 
-        // Pobieramy ID wybranych aktorów z formularza
         $actorIds = $request->input('actors');
 
         // Jeśli wybrano jakichś aktorów
@@ -41,19 +40,40 @@ class MovieController extends Controller
             $movie->actors()->attach($actorIds);
         }
 
-
-        // Możesz również wykonać inne operacje po zapisie filmu, np. przekierowanie lub wyświetlenie komunikatu sukcesu.
-
         return redirect()->route('movies.index')->with('success', 'Film został dodany.');
     }
 
     public function edit($id)
     {
         $movie = Movie::find($id);
-        $categories = Category::all(); // Zakładając, że masz model Category
+        $categories = Category::all();
+        $actors = Actor::all();
 
-        return view('admin.edit', compact('movie', 'categories'));
+        $selectedActors = $movie->actors->pluck('actor_id')->toArray();
+
+        return view('admin.movies.edit', compact('movie', 'categories', 'actors', 'selectedActors'));
     }
+
+    public function update(Request $request, $id)
+    {
+        $movie = Movie::findOrFail($id);
+
+        $movie->title = $request->input('title');
+        $movie->description = $request->input('description');
+        $movie->director = $request->input('director');
+        $movie->category_id = $request->input('category');
+        $movie->release_year = $request->input('release_year');
+        $movie->price = $request->input('price');
+        $movie->img_path = $request->input('image');
+
+        $movie->save();
+
+        $selectedActors = $request->input('actors', []);
+        $movie->actors()->sync($selectedActors);
+
+        return redirect()->route('movies.index', $movie->movies_id)->with('success', 'Film został zaktualizowany.');
+    }
+
 
     public function destroy($id)
     {
@@ -64,7 +84,5 @@ class MovieController extends Controller
 
         return redirect()->route('movies.index')->with('success', 'Film został usunięty.');
     }
-
-
 
 }

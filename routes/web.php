@@ -38,8 +38,15 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/movies', [MovieController::class, 'index'])->name('movies.index');
     Route::post('/movies', [MovieController::class, 'store'])->name('movies.store');
 
+    //edytowanie
     Route::get('/movies/{movie}/edit', [MovieController::class, 'edit'])->name('movies.edit');
+    Route::put('/movies/{movie}', [MovieController::class, 'update'])->name('movies.update');
+
+    //usuwanie
     Route::delete('/movies/{movie}', [MovieController::class, 'destroy'])->name('movies.destroy');
+
+
+
 
 
 
