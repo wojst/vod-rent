@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\MovieController;
 
 
 Route::get('/', [HomeController::class, 'homepage'])->name('homepage');
@@ -31,6 +32,19 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/blik-payment/{movie_id}', [CartController::class, 'showBlikPayment'])->name('blik-payment');
     Route::post('/process-blik-payment', [CartController::class, 'processBlikPayment'])->name('process-blik-payment');
+
+
+
+    Route::get('/movies', [MovieController::class, 'index'])->name('movies.index');
+    Route::post('/movies', [MovieController::class, 'store'])->name('movies.store');
+
+    Route::get('/movies/{movie}/edit', [MovieController::class, 'edit'])->name('movies.edit');
+    Route::delete('/movies/{movie}', [MovieController::class, 'destroy'])->name('movies.destroy');
+
+
+
+
+
 
 
 });

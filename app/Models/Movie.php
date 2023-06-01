@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 
 class Movie extends Model
 {
@@ -11,6 +12,10 @@ class Movie extends Model
 
     protected $table = 'movies';
     protected $primaryKey = 'movie_id';
+    protected $fillable = ['title', 'description', 'director', 'category_id', 'release_year', 'price', 'img_path'];
+
+    public $timestamps = false;
+
 
     public function actors()
     {
@@ -27,5 +32,11 @@ class Movie extends Model
     {
         return $this->hasMany(Order::class, 'movie_id', 'movie_id');
     }
+
+    public function actorsTransfer()
+    {
+        return $this->hasMany(MoviesActorsTransfer::class, 'movie_id')->cascadeDelete();
+    }
+
 }
 

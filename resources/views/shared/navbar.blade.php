@@ -10,18 +10,26 @@
                 <a class="nav-link" aria-current="page" href="{{ url('/ourmovies') }}">Filmy</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#cennik">Cennik</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#kontakt">Kontakt</a>
-            </li>
-            <li class="nav-item">
                 @if (Auth::check())
                     <a class="nav-link" href="{{ route('profile') }}">Profil</a>
                 @else
                     <a class="nav-link" href="{{ route('login') }}">Profil</a>
                 @endif
             </li>
+            @if(Auth::check() && Auth::user()->admin_role)
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <b>Panel administratora</b>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="{{ route('movies.index') }}">Filmy</a>
+                        <a class="dropdown-item" href="#">Kategorie</a>
+                        <a class="dropdown-item" href="#">Aktorzy</a>
+                        <a class="dropdown-item" href="#">Zamówienia</a>
+                        <a class="dropdown-item" href="#">Użytkownicy</a>
+                    </div>
+                  </li>
+            @endif
         </ul>
         @if (Auth::check())
             <form action="{{ route('logout') }}" method="POST">@csrf
