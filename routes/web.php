@@ -36,7 +36,6 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/process-blik-payment', [CartController::class, 'processBlikPayment'])->name('process-blik-payment');
 
     //ADMIN FILMY
-
     Route::get('/movies', [MovieController::class, 'index'])->name('movies.index');
     Route::post('/movies', [MovieController::class, 'store'])->name('movies.store');
     //edytowanie
@@ -46,7 +45,6 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/movies/{movie}', [MovieController::class, 'destroy'])->name('movies.destroy');
 
     //ADMIN KATEGORIE
-
     Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
     Route::post('/categories', [CategoryController::class, 'store'])->name('categories.store');
     Route::get('/categories/{id}/edit', [CategoryController::class, 'edit'])->name('categories.edit');
@@ -54,12 +52,18 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/categories/{id}', [CategoryController::class, 'destroy'])->name('categories.destroy');
 
     //ADMIN AKTORZY
-
     Route::get('/actors', [ActorController::class, 'index'])->name('actors.index');
     Route::post('/actors', [ActorController::class, 'store'])->name('actors.store');
     Route::delete('/actors/{id}', [ActorController::class, 'destroy'])->name('actors.destroy');
     Route::get('/actors/{id}/edit', [ActorController::class, 'edit'])->name('actors.edit');
     Route::put('/actors/{id}', [ActorController::class, 'update'])->name('actors.update');
+
+    //ADMIN UZYTKOWNICY
+    Route::get('/users', [UserController::class, 'index'])->name('users.index');
+    Route::post('/users', [UserController::class, 'store'])->name('users.store');
+    Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('users.edit');
+    Route::put('/users/{id}', [UserController::class, 'update'])->name('users.update');
+    Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
 
 
 

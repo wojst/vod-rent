@@ -24,6 +24,7 @@
         <table class="table">
             <thead>
                 <tr>
+                    <th>ID aktora</th>
                     <th>Imię i nazwisko</th>
                     <th>Akcje</th>
                 </tr>
@@ -31,6 +32,7 @@
             <tbody>
                 @foreach($actors as $actor)
                     <tr>
+                        <td> {{$actor->actor_id}} </td>
                         <td>{{ $actor->actor_name }}</td>
                         <td>
                             <form method="POST" action="{{ route('actors.destroy', $actor->actor_id) }}">

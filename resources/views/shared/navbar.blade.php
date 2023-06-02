@@ -25,8 +25,8 @@
                         <a class="dropdown-item" href="{{ route('movies.index') }}">Filmy</a>
                         <a class="dropdown-item" href="{{ route('categories.index') }}">Kategorie</a>
                         <a class="dropdown-item" href="{{ route('actors.index') }}">Aktorzy</a>
-                        <a class="dropdown-item" href="#">Zamówienia</a>
-                        <a class="dropdown-item" href="#">Użytkownicy</a>
+                        <a class="dropdown-item" href="">Zamówienia</a>
+                        <a class="dropdown-item" href="{{ route('users.index') }}">Użytkownicy</a>
                     </div>
                   </li>
             @endif

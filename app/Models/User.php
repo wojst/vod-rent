@@ -12,8 +12,9 @@ class User extends Model implements Authenticatable
 {
     use HasFactory, Notifiable;
 
+    protected $table = 'users';
     protected $primaryKey = 'user_id';
-
+    protected $fillable = ['name', 'email', 'password', 'admin_role', 'orders_count', 'loyalty_card'];
     public $timestamps = false;
 
     public function getAuthIdentifierName()
