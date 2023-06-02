@@ -27,7 +27,7 @@
             </div>
             <div class="mb-3">
                 <label for="orders_count" class="form-label">Liczba zamówień:</label>
-                <input type="number" name="orders_count" id="orders_count" class="form-control" value="0" required>
+                <input type="number" name="orders_count" id="orders_count" class="form-control" value="0" readonly required>
             </div>
 
             <div class="mb-3">
