@@ -46,6 +46,7 @@
             <div class="summary-section">
                 <h3>Podsumowanie użytkownika</h3>
                 <p>Ulubiona kategoria: {{ $user->id_fav_category }}</p>
+                <p>{{ $favActor }}</p>
             </div>
 
             <div class="card mt-4 d-flex align-items-center justify-content-center">

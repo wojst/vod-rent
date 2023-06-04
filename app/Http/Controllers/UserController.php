@@ -52,8 +52,16 @@ class UserController extends Controller
             $actors = $movie->actors()->get();
         }
 
+         // Wywołanie procedury i pobranie wyniku
+         $result = DB::select('CALL GetFavoriteActor(?)', [$user->user_id]);
+
+         $favActor = '';
+         if (!empty($result)) {
+             $favActor = $result[0]->result;
+         }
+
         // Przekazanie danych użytkownika, zamówień i wyniku procedury do widoku
-        return view('user.profile', compact('user', 'orders', 'randomMovieFromLastCategory', 'categoryName', 'actors'));
+        return view('user.profile', compact('user', 'orders', 'randomMovieFromLastCategory', 'categoryName', 'actors', 'favActor'));
     }
 
     public function index()
