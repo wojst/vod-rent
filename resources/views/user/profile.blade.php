@@ -43,6 +43,11 @@
               </div>
             </div>
 
+            <div class="summary-section">
+                <h3>Podsumowanie użytkownika</h3>
+                <p>Ulubiona kategoria: {{ $user->id_fav_category }}</p>
+            </div>
+
             <div class="card mt-4 d-flex align-items-center justify-content-center">
                 <h2 class="text-center">Polecane dla ciebie</h2>
                 <div class="col-md-6 col-lg-6 col-xl-3">

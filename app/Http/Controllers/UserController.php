@@ -34,6 +34,24 @@ class UserController extends Controller
             $actors = $movie->actors()->get();
         }
 
+        // Pobranie nazwy kategorii na podstawie ID kategorii z wyniku procedury
+        $lastCategoryId = null;
+        $categoryName = null;
+
+        if (!empty($randomMovieFromLastCategory)) {
+            $lastCategoryId = $randomMovieFromLastCategory[0]->category_id;
+            $category = Category::find($lastCategoryId);
+            $categoryName = $category->category_name;
+
+            // Aktualizacja kolumny id_fav_category w tabeli users
+            $user->id_fav_category = $categoryName;
+
+
+            $randomMovieId = $randomMovieFromLastCategory[0]->movie_id;
+            $movie = Movie::find($randomMovieId);
+            $actors = $movie->actors()->get();
+        }
+
         // Przekazanie danych użytkownika, zamówień i wyniku procedury do widoku
         return view('user.profile', compact('user', 'orders', 'randomMovieFromLastCategory', 'categoryName', 'actors'));
     }
