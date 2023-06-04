@@ -44,8 +44,8 @@ class CartController extends Controller
                 $order = Order::create([
                     'user_id' => auth()->user()->user_id,
                     'movie_id' => $movie->movie_id,
-                    'rent_start' => now(),
-                    'rent_end' => now()->addHours(24),
+                    'rent_start' => now()->addHours(2),
+                    'rent_end' => now()->addHours(26),
                     'cost' => $movie->price,
                     'code' => $transactionCode
                 ]);

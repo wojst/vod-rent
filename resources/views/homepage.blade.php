@@ -22,8 +22,10 @@
                         <img src="{{ asset($movie->img_path) }}" class="card-img-top" alt="{{ $movie->title }}">
                         <div class="card-body">
                             <h5 class="card-title">{{ $movie->title }}</h5>
-                            {{-- <p class="card-text">Popularność: {{ $movie->popularity }}</p> --}}
-                        </div>
+                            @if(Auth::check() && Auth::user()->admin_role)
+                                <p class="card-text">Popularność: {{ $movie->popularity }}</p>
+                            @endif
+                            </div>
                         @if(Auth::check())
                                 <a href="{{ route('summary', ['movie_id' => $movie->movie_id]) }}" class="btn btn-primary">Wypożycz</a>
                             @else

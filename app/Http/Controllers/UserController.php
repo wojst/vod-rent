@@ -23,6 +23,7 @@ class UserController extends Controller
         // Pobranie nazwy kategorii na podstawie ID kategorii z wyniku procedury
         $lastCategoryId = null;
         $categoryName = null;
+        $actors = null;
 
         if (!empty($randomMovieFromLastCategory)) {
             $lastCategoryId = $randomMovieFromLastCategory[0]->category_id;
@@ -51,6 +52,24 @@ class UserController extends Controller
             $movie = Movie::find($randomMovieId);
             $actors = $movie->actors()->get();
         }
+
+
+        // Wywołanie procedury
+        $resultCategory = DB::select('CALL GetFavoriteCategory(?)', [$user->user_id]);
+
+        // $favCategory = '';
+        // if (!empty($resultCategory)) {
+        //     $favCategoryId = $resultCategory[0]->fav_category_id;
+        //     $category = Category::find($favCategoryId);
+        //     if ($category) {
+        //         $favCategoryName = $category->category_name;
+        //     }
+
+
+
+        // }
+
+
 
          // Wywołanie procedury i pobranie wyniku
          $result = DB::select('CALL GetFavoriteActor(?)', [$user->user_id]);
