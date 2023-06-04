@@ -87,7 +87,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($movies as $movie)
+                    @foreach($movies->sortByDesc('movie_id') as $movie)
                         <tr>
                             <td>{{ $movie->movie_id }}</td>
                             <td>{{ $movie->title }}</td>

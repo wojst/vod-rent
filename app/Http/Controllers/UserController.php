@@ -18,7 +18,7 @@ class UserController extends Controller
         $orders->load('movie');
 
         // Wywołanie procedury i pobranie wyniku
-        $randomMovieFromLastCategory = DB::select('CALL GetRandomMovieByLastCategory(?)', [$user->user_id]);
+        $randomMovieFromLastCategory = DB::select('CALL GetMovieFromLastCategory(?)', [$user->user_id]);
 
         // Pobranie nazwy kategorii na podstawie ID kategorii z wyniku procedury
         $lastCategoryId = null;
