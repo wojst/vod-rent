@@ -90,8 +90,6 @@
 
         <br><br>
 
-        @include('shared.pricelist')
-
         @include('shared.contactform')
 
         <script src="js/bootstrap.bundle.js"></script>

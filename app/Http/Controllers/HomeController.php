@@ -6,14 +6,16 @@ use Illuminate\Http\Request;
 use App\Models\Movie;
 use App\Models\Category;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
     public function index()
     {
         $movies = Movie::with('actors')->inRandomOrder()->limit(4)->get();
+        $topMovies = DB::select('CALL GetTop3MoviesToday()');
 
-        return view('homepage', compact('movies'));
+        return view('homepage', compact('movies', 'topMovies'));
     }
 
 

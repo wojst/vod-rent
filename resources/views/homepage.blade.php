@@ -13,6 +13,30 @@
 
         @include('shared.carousel')
 
+        <div class="card mt-4">
+            <h2 class="text-center">Najpopularniejsze filmy dzisiaj</h2>
+            <div class="row">
+                @foreach($topMovies as $movie)
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="{{ asset($movie->img_path) }}" class="card-img-top" alt="{{ $movie->title }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ $movie->title }}</h5>
+                            {{-- <p class="card-text">Popularność: {{ $movie->popularity }}</p> --}}
+                        </div>
+                        @if(Auth::check())
+                                <a href="{{ route('summary', ['movie_id' => $movie->movie_id]) }}" class="btn btn-primary">Wypożycz</a>
+                            @else
+                                <a href="{{ route('login') }}" class="btn btn-primary">Zaloguj się, aby wypożyczyć</a>
+                            @endif
+                    </div>
+                </div>
+                @endforeach
+            </div>
+        </div>
+
+        <br><br>
+
         <div class="container" id="filmy">
             <h2 style="text-align: center">NASZE HITY FILMOWE</h3>
             <br>
@@ -53,8 +77,6 @@
         </div>
 
         <br><br>
-
-        @include('shared.pricelist')
 
         @include('shared.contactform')
 
