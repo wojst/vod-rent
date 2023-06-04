@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use App\Models\User;
+use App\Models\Category;
+use App\Models\Movie;
 
 class UserController extends Controller
 {
@@ -14,9 +17,25 @@ class UserController extends Controller
         $orders = $user->orders;
         $orders->load('movie');
 
+        // Wywołanie procedury i pobranie wyniku
+        $randomMovieFromLastCategory = DB::select('CALL GetRandomMovieByLastCategory(?)', [$user->user_id]);
 
-        // Przekazanie danych użytkownika do widoku
-        return view('user.profile', compact('user', 'orders'));
+        // Pobranie nazwy kategorii na podstawie ID kategorii z wyniku procedury
+        $lastCategoryId = null;
+        $categoryName = null;
+
+        if (!empty($randomMovieFromLastCategory)) {
+            $lastCategoryId = $randomMovieFromLastCategory[0]->category_id;
+            $category = Category::find($lastCategoryId);
+            $categoryName = $category->category_name;
+
+            $randomMovieId = $randomMovieFromLastCategory[0]->movie_id;
+            $movie = Movie::find($randomMovieId);
+            $actors = $movie->actors()->get();
+        }
+
+        // Przekazanie danych użytkownika, zamówień i wyniku procedury do widoku
+        return view('user.profile', compact('user', 'orders', 'randomMovieFromLastCategory', 'categoryName', 'actors'));
     }
 
     public function index()
