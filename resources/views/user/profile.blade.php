@@ -45,17 +45,22 @@
 
             <div class="summary-section">
                 <h3>Twoje "ulubione"</h3>
+                    @if(isset($favMovieTitle))
+                        <p>Twój ulubiony film: {{ $favMovieTitle }}</p>
+                    @else
+                        <p>Twój ulubiony film: </p>
+                    @endif
                     @if(isset($favCategoryName))
                     <p> Twoja ulubiona kategoria: {{ $favCategoryName }}</p>
                     @else
                     <p>Twoja ulubiona kategoria: </p>
                     @endif
 
-                @if(isset($favActor))
-                    <p>Twój ulubiony aktor: {{ $favActor }}</p>
-                @else
-                <p>Twój ulubiony aktor: </p>
-                @endif
+                    @if(isset($favActor))
+                        <p>Twój ulubiony aktor: {{ $favActor }}</p>
+                    @else
+                    <p>Twój ulubiony aktor: </p>
+                    @endif
             </div>
 
 
