@@ -57,17 +57,15 @@ class UserController extends Controller
         // Wywołanie procedury
         $resultCategory = DB::select('CALL GetFavoriteCategory(?)', [$user->user_id]);
 
-        // $favCategory = '';
-        // if (!empty($resultCategory)) {
-        //     $favCategoryId = $resultCategory[0]->fav_category_id;
-        //     $category = Category::find($favCategoryId);
-        //     if ($category) {
-        //         $favCategoryName = $category->category_name;
-        //     }
-
-
-
-        // }
+        $favCategory = null;
+        $favCategoryName = '';
+        if (!empty($resultCategory)) {
+            $favCategoryId = $resultCategory[0]->fav_category_id;
+            $category = Category::find($favCategoryId);
+            if ($category) {
+                $favCategoryName = $category->category_name;
+            }
+        }
 
 
 
@@ -80,7 +78,7 @@ class UserController extends Controller
          }
 
         // Przekazanie danych użytkownika, zamówień i wyniku procedury do widoku
-        return view('user.profile', compact('user', 'orders', 'randomMovieFromLastCategory', 'categoryName', 'actors', 'favActor'));
+        return view('user.profile', compact('user', 'orders', 'randomMovieFromLastCategory', 'categoryName', 'actors', 'favActor', 'favCategoryName'));
     }
 
     public function index()

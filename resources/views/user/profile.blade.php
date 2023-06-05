@@ -44,12 +44,17 @@
             </div>
 
             <div class="summary-section">
-                <h3>Podsumowanie użytkownika</h3>
-                    <p>Ulubiona kategoria: {{ $user->id_fav_category }}</p>
+                <h3>Twoje "ulubione"</h3>
+                    @if(isset($favCategoryName))
+                    <p> Twoja ulubiona kategoria: {{ $favCategoryName }}</p>
+                    @else
+                    <p>Twoja ulubiona kategoria: </p>
+                    @endif
+
                 @if(isset($favActor))
-                    <p>Ulubiony aktor: {{ $favActor }}</p>
+                    <p>Twój ulubiony aktor: {{ $favActor }}</p>
                 @else
-                <p>Ulubiony aktor: </p>
+                <p>Twój ulubiony aktor: </p>
                 @endif
             </div>
 
