@@ -2,6 +2,7 @@
 <html lang="en">
     <head>
         @include('shared.header')
+        <script src="https://js.stripe.com/v3/"></script>
     </head>
     <body>
         <div class="container h-100 py-5">
@@ -37,12 +38,31 @@
                     </div>
 
                     <div class="card text-center">
-                        <div class="card-body align-items-center">
-                            <a href="" class="btn btn-warning btn-block btn-lg">Przejdź do płatności</a>
+                        <div class="container">
+                            <h3>Formularz płatności</h3>
+
+                            <form action="{{ route('process-payment', ['amount' => $movie->price, 'movie' => $movie]) }}" method="POST" id="payment-form">
+                                @csrf
+
+                                <div class="mb-3">
+                                    <label for="card-element" class="form-label">
+                                        Karta kredytowa lub debetowa
+                                    </label>
+                                    <h3 class="card-text">Koszt zakupu: @if(auth()->user()->loyalty_card) {{ number_format($amount * 0.9, 2) }} @else {{ number_format($amount, 2) }} @endif zł</h3>
+                                    <div id="card-element" class="form-control">
+                                        <!-- Element, w którym zostanie wyrenderowany formularz karty Stripe -->
+                                    </div>
+
+                                    <!-- Wyświetlanie błędów -->
+                                    <div id="card-errors" class="invalid-feedback"></div>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary">Zapłać</button>
+                            </form>
                         </div>
-                        <div class="card-body align-items-center">
+                        {{-- <div class="card-body align-items-center">
                             <a href="{{ route('blik-payment', ['movie_id' => $movie->movie_id]) }}" class="btn btn-warning btn-block btn-lg">BLIK</a>
-                        </div>
+                        </div> --}}
                     </div>
 
 
@@ -53,16 +73,76 @@
             </div>
         </div>
 
-        {{-- <script>
-            // Obsługa zmiany czasu wypożyczenia
-            document.getElementById('rental_duration').addEventListener('change', function() {
-                var duration = this.value;
-                var price = duration === '24' ? 15 : 25; // Cena zależna od czasu wypożyczenia
 
-                document.getElementById('movie-price').textContent = price;
+        <script>
+            // Utwórz element karty Stripe
+            var stripe = Stripe('pk_test_51NDBgPDXAO4dSNxMTrg8QDlvhPHhslVoXugK0rbjLLOaVCNH4ogkfuKPE6MDdlL9DIuWjuHwBxZwzICOw4xdKRDv00NYeuXR41');
+            var elements = stripe.elements();
+            var cardElement = elements.create('card');
+
+            // Dodaj element karty do formularza
+            cardElement.mount('#card-element');
+
+            // Obsługa błędów
+            var cardErrors = document.getElementById('card-errors');
+
+            cardElement.addEventListener('change', function(event) {
+                if (event.error) {
+                    cardErrors.textContent = event.error.message;
+                } else {
+                    cardErrors.textContent = '';
+                }
             });
-        </script> --}}
 
+            // Obsługa przesłania formularza płatności
+            var form = document.getElementById('payment-form');
+
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                stripe.createToken(cardElement).then(function(result) {
+                    if (result.error) {
+                        cardErrors.textContent = result.error.message;
+                    } else {
+                        var tokenInput = document.createElement('input');
+                        tokenInput.type = 'hidden';
+                        tokenInput.name = 'stripeToken';
+                        tokenInput.value = result.token.id;
+                        form.appendChild(tokenInput);
+
+                        form.submit();
+                    }
+                });
+            });
+        </script>
+        <script>
+            // Obsługa przesłania formularza płatności
+            var form = document.getElementById('payment-form');
+
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                // Wyślij żądanie asynchroniczne do metody processPayment
+                fetch(form.action, {
+                    method: form.method,
+                    body: new FormData(form)
+                })
+                .then(function(response) {
+                    if (response.ok) {
+                        // Przekieruj użytkownika na stronę sukcesu
+                        window.location.href = "{{ route('payment.success') }}";
+                    } else {
+                        // Przekieruj użytkownika na stronę błędu
+                        window.location.href = "{{ route('payment.error') }}";
+                    }
+                })
+                .catch(function(error) {
+                    console.error(error);
+                    // Przekieruj użytkownika na stronę błędu
+                    window.location.href = "{{ route('payment.error') }}";
+                });
+            });
+        </script>
 
         <script src="js/bootstrap.bundle.js"></script>
     </body>

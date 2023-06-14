@@ -33,8 +33,8 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/summary/{movie_id}', [CartController::class, 'summary'])->name('summary');
 
-    Route::get('/blik-payment/{movie_id}', [CartController::class, 'showBlikPayment'])->name('blik-payment');
-    Route::post('/process-blik-payment', [CartController::class, 'processBlikPayment'])->name('process-blik-payment');
+    // Route::get('/blik-payment/{movie_id}', [CartController::class, 'showBlikPayment'])->name('blik-payment');
+    // Route::post('/process-blik-payment', [CartController::class, 'processBlikPayment'])->name('process-blik-payment');
 
     //ADMIN FILMY
     Route::get('/movies', [MovieController::class, 'index'])->name('movies.index');
@@ -70,6 +70,19 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
     Route::post('/orders', [OrderController::class, 'store'])->name('orders.store');
     Route::delete('/orders/{order}', [OrderController::class, 'destroy'])->name('orders.destroy');
+
+    Route::get('/payment', function () {
+        return view('payment.payment');
+    })->name('payment');
+
+    Route::post('/process-payment/{amount}/{movie}', [CartController::class, 'processPayment'])->name('process-payment');
+    // Route::get('/payment/{amount}', [PaymentController::class, 'showPayment'])->name('payment.amount');
+
+    Route::view('/success', 'payment.success')->name('payment.success');
+    Route::view('/error', 'payment.error')->name('payment.error');
+
+
+
 
 
 

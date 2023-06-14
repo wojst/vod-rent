@@ -66,7 +66,7 @@
 
             {{-- pagination --}}
 
-            <div class="d-flex justify-content-center mt-4">
+            {{-- <div class="d-flex justify-content-center mt-4">
                 <ul class="pagination">
                     <li class="page-item {{ $movies->previousPageUrl() ? '' : 'disabled' }}">
                         <a class="page-link" href="{{ $movies->previousPageUrl() }}" aria-label="Poprzednia">
@@ -84,7 +84,7 @@
                         </a>
                     </li>
                 </ul>
-            </div>
+            </div> --}}
 
         </div>
 

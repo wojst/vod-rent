@@ -7,14 +7,17 @@ use App\Models\Movie;
 use Illuminate\Support\Facades\Session;
 use App\Models\Order;
 use Illuminate\Support\Facades\DB;
+use Stripe\Stripe;
+use Stripe\Charge;
 
 class CartController extends Controller
 {
     public function summary($movie_id)
     {
         $movie = Movie::find($movie_id);
+        $amount = $movie->price;
 
-        return view('summary', ['movie' => $movie]);
+        return view('summary', compact('movie', 'amount'));
     }
 
     public function showBlikPayment($movie_id)
@@ -24,85 +27,153 @@ class CartController extends Controller
         return view('blik-payment', ['movie' => $movie, 'movie_id' => $movie_id]);
     }
 
-    public function processBlikPayment(Request $request)
+
+    // Metoda obsługująca proces płatności
+    public function processPayment(Request $request, $amount, Movie $movie)
     {
-        $blikCode = $request->input('blik_code');
-        $movie_id = $request->input('movie_id');
+        // Pobierz dane z formularza płatności
+        $amount = $movie->price;
+        if (auth()->user()->loyalty_card) {
+            $amount *= 0.9; // Obniżenie ceny o 10% dla posiadaczy karty stałego klienta
+        }
 
-        // Sprawdź, czy wpisany kod BLIK składa się z 6 cyfr
-        if (strlen($blikCode) === 6 && ctype_digit($blikCode)) {
-            // Kod BLIK jest poprawny
+        $transactionCode = $this->generateTransactionCode();
 
-            // Generuj losowy 3-znakowy kod transakcji
-            $transactionCode = $this->generateTransactionCode();
+        // Wykonaj płatność za pomocą Stripe
+        // ...
 
-            $movie = Movie::find($movie_id);
+        Stripe::setApiKey('sk_test_51NDBgPDXAO4dSNxMc6e4OkwI6HJRJXBg7AvpaiKT8zROpe7WbIbgQUKaLvBJCqw7vdefzoj4JpBDA114nIFlxZ2q00aIpYsGxO');
 
-            // Sprawdź, czy znaleziono film
-            if ($movie) {
-                // Tworzenie nowego order
-                $order = Order::create([
-                    'user_id' => auth()->user()->user_id,
-                    'movie_id' => $movie->movie_id,
-                    'rent_start' => now()->addHours(2),
-                    'rent_end' => now()->addHours(26),
-                    'cost' => $movie->price,
-                    'code' => $transactionCode
-                ]);
+        // Przetwarzanie płatności
+        try {
+            Charge::create([
+                'amount' => $amount*100,
+                'currency' => 'pln',
+                'source' => $request->stripeToken,
+                'description' => 'Opis płatności'
+            ]);
 
-                // Zwiększanie liczby zamówień użytkownika
-                DB::table('users')
+            // Jeśli płatność jest udana, zapisz rekord do bazy danych
+
+            $order = Order::create([
+                'user_id' => auth()->user()->user_id,
+                'movie_id' => $movie->movie_id,
+                'rent_start' => now()->addHours(2),
+                'rent_end' => now()->addHours(26),
+                'cost' => $amount,
+                'code' => $transactionCode
+            ]);
+
+            // Zwiększanie liczby zamówień użytkownika
+            DB::table('users')
                 ->where('user_id', auth()->user()->user_id)
                 ->increment('orders_count');
 
-                // Sprawdzenie liczby zamówień użytkownika
-                $userOrdersCount = DB::table('users')
+            // Sprawdzenie liczby zamówień użytkownika
+            $userOrdersCount = DB::table('users')
                 ->where('user_id', auth()->user()->user_id)
                 ->value('orders_count');
 
-                // Aktualizacja wartości loyalty_cart
-                if ($userOrdersCount >= 10) {
-                    DB::table('users')
-                        ->where('user_id', auth()->user()->user_id)
-                        ->update(['loyalty_card' => true]);
-                }
-
-                // Sprawdzenie czy użytkownik ma kartę stałego klienta
-                $userHasLoyaltyCard = DB::table('users')
-                ->where('user_id', auth()->user()->user_id)
-                ->value('loyalty_card');
-
-                // Obliczanie 10% zniżki, jeśli użytkownik ma kartę stałego klienta
-                if ($userHasLoyaltyCard) {
-                    $discount = $movie->price * 0.1;
-                    $order->cost -= $discount;
-                }
-
-                // Zwiększanie wartości rentals_count filmu
-                DB::table('movies')
-                    ->where('movie_id', $movie->movie_id)
-                    ->increment('rentals_count');
-
-
-                Session::flash('success', 'Płatność BLIK została pomyślnie przetworzona.');
-                Session::flash('transaction_code', $transactionCode);
-
-                return redirect()->route('profile');
-            } else {
-                // Film o podanym movie_id nie został znaleziony
-                Session::flash('error', 'Film nie został znaleziony.');
-
-                return redirect()->route('homepage');
+            // Aktualizacja wartości loyalty_cart
+            if ($userOrdersCount >= 10) {
+                DB::table('users')
+                    ->where('user_id', auth()->user()->user_id)
+                    ->update(['loyalty_card' => true]);
             }
-        } else {
-            // Kod BLIK jest niepoprawny
-            // Możesz przekierować użytkownika na stronę błędu lub wyświetlić odpowiednie komunikaty
 
-            Session::flash('error', 'Transakcja BLIK nieudana.');
+            // Zwiększanie wartości rentals_count filmu
+            DB::table('movies')
+                ->where('movie_id', $movie->movie_id)
+                ->increment('rentals_count');
 
-            return redirect()->route('blik-payment', ['movie_id' => $movie_id]);
+            // Przekieruj użytkownika na stronę sukcesu
+            return redirect()->route('payment.success');
+        } catch (\Exception $e) {
+            // Wystąpił błąd podczas przetwarzania płatności
+
+            return redirect()->route('payment.error');
         }
     }
+
+    // public function processBlikPayment(Request $request)
+    // {
+    //     $blikCode = $request->input('blik_code');
+    //     $movie_id = $request->input('movie_id');
+
+    //     // Sprawdź, czy wpisany kod BLIK składa się z 6 cyfr
+    //     if (strlen($blikCode) === 6 && ctype_digit($blikCode)) {
+    //         // Kod BLIK jest poprawny
+
+    //         // Generuj losowy 3-znakowy kod transakcji
+    //         $transactionCode = $this->generateTransactionCode();
+
+    //         $movie = Movie::find($movie_id);
+
+    //         // Sprawdź, czy znaleziono film
+    //         if ($movie) {
+    //             // Tworzenie nowego order
+    //             $order = Order::create([
+    //                 'user_id' => auth()->user()->user_id,
+    //                 'movie_id' => $movie->movie_id,
+    //                 'rent_start' => now()->addHours(2),
+    //                 'rent_end' => now()->addHours(26),
+    //                 'cost' => $movie->price,
+    //                 'code' => $transactionCode
+    //             ]);
+
+    //             // Zwiększanie liczby zamówień użytkownika
+    //             DB::table('users')
+    //             ->where('user_id', auth()->user()->user_id)
+    //             ->increment('orders_count');
+
+    //             // Sprawdzenie liczby zamówień użytkownika
+    //             $userOrdersCount = DB::table('users')
+    //             ->where('user_id', auth()->user()->user_id)
+    //             ->value('orders_count');
+
+    //             // Aktualizacja wartości loyalty_cart
+    //             if ($userOrdersCount >= 10) {
+    //                 DB::table('users')
+    //                     ->where('user_id', auth()->user()->user_id)
+    //                     ->update(['loyalty_card' => true]);
+    //             }
+
+    //             // Sprawdzenie czy użytkownik ma kartę stałego klienta
+    //             $userHasLoyaltyCard = DB::table('users')
+    //             ->where('user_id', auth()->user()->user_id)
+    //             ->value('loyalty_card');
+
+    //             // Obliczanie 10% zniżki, jeśli użytkownik ma kartę stałego klienta
+    //             if ($userHasLoyaltyCard) {
+    //                 $discount = $movie->price * 0.1;
+    //                 $order->cost -= $discount;
+    //             }
+
+    //             // Zwiększanie wartości rentals_count filmu
+    //             DB::table('movies')
+    //                 ->where('movie_id', $movie->movie_id)
+    //                 ->increment('rentals_count');
+
+
+    //             Session::flash('success', 'Płatność BLIK została pomyślnie przetworzona.');
+    //             Session::flash('transaction_code', $transactionCode);
+
+    //             return redirect()->route('profile');
+    //         } else {
+    //             // Film o podanym movie_id nie został znaleziony
+    //             Session::flash('error', 'Film nie został znaleziony.');
+
+    //             return redirect()->route('homepage');
+    //         }
+    //     } else {
+    //         // Kod BLIK jest niepoprawny
+    //         // Możesz przekierować użytkownika na stronę błędu lub wyświetlić odpowiednie komunikaty
+
+    //         Session::flash('error', 'Transakcja BLIK nieudana.');
+
+    //         return redirect()->route('blik-payment', ['movie_id' => $movie_id]);
+    //     }
+    // }
 
     private function generateTransactionCode()
     {

@@ -34,7 +34,7 @@ class HomeController extends Controller
 
     public function ourMovies()
     {
-        $movies = Movie::paginate(8);
+        $movies = Movie::get();
         $categories = Category::all();
         return view('ourmovies', compact('movies', 'categories'));
     }
@@ -62,7 +62,7 @@ class HomeController extends Controller
             });
         }
 
-        $movies = $movies->with('category')->paginate(8);
+        $movies = $movies->with('category')->get();
 
         $categories = Category::all();
 
