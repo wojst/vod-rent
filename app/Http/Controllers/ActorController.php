@@ -25,6 +25,7 @@ class ActorController extends Controller
     public function destroy($id)
     {
         $actor = Actor::findOrFail($id);
+        $actor->movies()->detach();
         $actor->delete();
 
         return redirect()->route('actors.index')->with('success', 'Aktor został usunięty.');
