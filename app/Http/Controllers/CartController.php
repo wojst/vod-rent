@@ -84,7 +84,7 @@ class CartController extends Controller
 
             return redirect()->route('payment.success');
         } catch (CardException $e) {
-            dd('catch block reached');
+
             $order = Order::create([
                 'user_id' => auth()->user()->user_id,
                 'movie_id' => $movie->movie_id,
