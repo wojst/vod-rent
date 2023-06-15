@@ -4,7 +4,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\CategoryController;
@@ -32,9 +31,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/profile', [UserController::class, 'showProfile'])->name('profile');
 
     Route::get('/summary/{movie_id}', [CartController::class, 'summary'])->name('summary');
-
-    // Route::get('/blik-payment/{movie_id}', [CartController::class, 'showBlikPayment'])->name('blik-payment');
-    // Route::post('/process-blik-payment', [CartController::class, 'processBlikPayment'])->name('process-blik-payment');
 
     //ADMIN FILMY
     Route::get('/movies', [MovieController::class, 'index'])->name('movies.index');
@@ -71,25 +67,10 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/orders', [OrderController::class, 'store'])->name('orders.store');
     Route::delete('/orders/{order}', [OrderController::class, 'destroy'])->name('orders.destroy');
 
-    Route::get('/payment', function () {
-        return view('payment.payment');
-    })->name('payment');
-
+    //STRIPE
     Route::post('/process-payment/{amount}/{movie}', [CartController::class, 'processPayment'])->name('process-payment');
-    // Route::get('/payment/{amount}', [PaymentController::class, 'showPayment'])->name('payment.amount');
-
-    Route::view('/success', 'payment.success')->name('payment.success');
-    Route::view('/error', 'payment.error')->name('payment.error');
-
-
-
-
-
-
-
-
-
-
+    Route::get('/payment/success', [CartController::class, 'success'])->name('payment.success');
+    Route::get('/payment/error', [CartController::class, 'error'])->name('payment.error');
 
 
 

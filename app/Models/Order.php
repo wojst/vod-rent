@@ -12,7 +12,7 @@ class Order extends Model
     protected $table = 'orders';
     protected $primaryKey = 'order_id';
 
-    protected $fillable = ['user_id', 'movie_id', 'rent_start', 'rent_end', 'cost' , 'code'];
+    protected $fillable = ['user_id', 'movie_id', 'rent_start', 'rent_end', 'cost' , 'code', 'payment_status'];
 
     public $timestamps = false;
 

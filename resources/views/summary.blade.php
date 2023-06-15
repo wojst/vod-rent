@@ -48,7 +48,7 @@
                                     <label for="card-element" class="form-label">
                                         Karta kredytowa lub debetowa
                                     </label>
-                                    <h3 class="card-text">Koszt zakupu: @if(auth()->user()->loyalty_card) {{ number_format($amount * 0.9, 2) }} @else {{ number_format($amount, 2) }} @endif zł</h3>
+                                    <h3 class="card-text">@if(auth()->user()->loyalty_card) {{ number_format($amount * 0.9, 2) }} @else {{ number_format($amount, 2) }} @endif zł</h3>
                                     <div id="card-element" class="form-control">
                                         <!-- Element, w którym zostanie wyrenderowany formularz karty Stripe -->
                                     </div>

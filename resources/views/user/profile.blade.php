@@ -107,6 +107,7 @@
                                 <th>Data zamówienia</th>
                                 <th>Data końca wypożyczenia</th>
                                 <th>Kod</th>
+                                <th>Status płatności</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -118,6 +119,15 @@
                                     <td>{{ $order->rent_start }}</td>
                                     <td>{{ $order->rent_end }}</td>
                                     <td>{{ $order->code }}</td>
+                                    <td>
+                                        @if ($order->payment_status == 'succeed')
+                                          Zaakceptowana
+                                        @elseif ($order->payment_status == 'failed')
+                                          Odrzucona
+                                        @elseif ($order->payment_status == 'pending')
+                                          W trakcie
+                                        @endif
+                                      </td>
                                 </tr>
                             @endforeach
                         </tbody>
