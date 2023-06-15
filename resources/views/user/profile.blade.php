@@ -100,7 +100,7 @@
                                     @endif
                                 </p>
                                 <p class="card-text">Reżyser: {{ $randomMovieFromLastCategory[0]->director }}</p>
-                                <p class="card-text">Gatunek: {{ $categoryName }}</p>
+                                <p class="card-text">Gatunek: {{ $categoryName ?? 'null' }}</p>
                                 <p class="card-text">{{ $randomMovieFromLastCategory[0]->release_year }}</p>
                                 <h6 class="card-text">Cena: {{ $randomMovieFromLastCategory[0]->price }} zł</h6>
                                 @if(Auth::check())
@@ -135,7 +135,7 @@
                             @foreach($orders->sortByDesc('rent_start') as $order)
                                 <tr>
                                     <td>{{ $order->order_id }}</td>
-                                    <td>{{ $order->movie->title }}</td>
+                                    <td>{{ $order->movie->title ?? 'null' }}</td>
                                     <td>{{ $order->cost }}</td>
                                     <td>{{ $order->rent_start }}</td>
                                     <td>{{ $order->rent_end }}</td>

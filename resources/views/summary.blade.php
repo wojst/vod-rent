@@ -22,7 +22,7 @@
                                     </div>
                                     <div class="col-md-9">
                                         <h4 class="card-title">{{ $movie->title }}</h4>
-                                        <p class="card-text">Gatunek: {{ $movie->category->category_name }}</p>
+                                        <p class="card-text">Gatunek: {{ optional($movie->category)->category_name ?? 'null' }}</p>
                                         <p class="movie-price">Czas wypożyczenia: wszystkie nasze filmy wypożyczane są na 24 godziny</p>
                                         <br><br>
                                         <h3 class="card-text">Koszt zakupu: @if(auth()->user()->loyalty_card) {{ number_format($movie->price * 0.9, 2) }} @else {{ number_format($movie->price, 2) }} @endif zł</h3>

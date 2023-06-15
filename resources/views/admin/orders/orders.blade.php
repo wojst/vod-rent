@@ -68,8 +68,8 @@
                 @foreach ($orders as $order)
                     <tr>
                         <td>{{ $order->order_id }}</td>
-                        <td>{{ $order->user->name }}</td>
-                        <td>{{ $order->movie->title }}</td>
+                        <td>{{ optional($order->user)->name ?? 'null' }}</td>
+                        <td>{{ optional($order->movie)->title ?? 'null' }}</td>
                         <td>{{ $order->rent_start }}</td>
                         <td>{{ $order->rent_end }}</td>
                         <td>{{ $order->cost }}</td>

@@ -99,7 +99,7 @@
                                 {{ $actors }}
                             </td>
                             <td>{{ $movie->director }}</td>
-                            <td>{{ $movie->category->category_name }}</td>
+                            <td>{{ optional($movie->category)->category_name ?? 'null' }}</td>
                             <td>{{ $movie->release_year }}</td>
                             <td>{{ $movie->price }}</td>
                             <td>{{ $movie->rentals_count }}</td>
