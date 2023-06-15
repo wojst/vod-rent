@@ -60,9 +60,6 @@
                                 <button type="submit" class="btn btn-primary">Zapłać</button>
                             </form>
                         </div>
-                        {{-- <div class="card-body align-items-center">
-                            <a href="{{ route('blik-payment', ['movie_id' => $movie->movie_id]) }}" class="btn btn-warning btn-block btn-lg">BLIK</a>
-                        </div> --}}
                     </div>
 
 
@@ -75,12 +72,12 @@
 
 
         <script>
-            // Utwórz element karty Stripe
+            // Utworzenie element karty Stripe
             var stripe = Stripe('pk_test_51NDBgPDXAO4dSNxMTrg8QDlvhPHhslVoXugK0rbjLLOaVCNH4ogkfuKPE6MDdlL9DIuWjuHwBxZwzICOw4xdKRDv00NYeuXR41');
             var elements = stripe.elements();
             var cardElement = elements.create('card');
 
-            // Dodaj element karty do formularza
+            // Dodanie element karty do formularza
             cardElement.mount('#card-element');
 
             // Obsługa błędów
@@ -115,34 +112,7 @@
                 });
             });
         </script>
-        <script>
-            // Obsługa przesłania formularza płatności
-            var form = document.getElementById('payment-form');
 
-            form.addEventListener('submit', function(event) {
-                event.preventDefault();
-
-                // Wyślij żądanie asynchroniczne do metody processPayment
-                fetch(form.action, {
-                    method: form.method,
-                    body: new FormData(form)
-                })
-                .then(function(response) {
-                    if (response.ok) {
-                        // Przekieruj użytkownika na stronę sukcesu
-                        window.location.href = "{{ route('payment.success') }}";
-                    } else {
-                        // Przekieruj użytkownika na stronę błędu
-                        window.location.href = "{{ route('payment.error') }}";
-                    }
-                })
-                .catch(function(error) {
-                    console.error(error);
-                    // Przekieruj użytkownika na stronę błędu
-                    window.location.href = "{{ route('payment.error') }}";
-                });
-            });
-        </script>
 
         <script src="js/bootstrap.bundle.js"></script>
     </body>

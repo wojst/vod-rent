@@ -21,13 +21,6 @@ class CartController extends Controller
         return view('summary', compact('movie', 'amount'));
     }
 
-    public function showBlikPayment($movie_id)
-    {
-        $movie = Movie::find($movie_id);
-
-        return view('blik-payment', ['movie' => $movie, 'movie_id' => $movie_id]);
-    }
-
     public function processPayment(Request $request, $amount, Movie $movie)
     {
         $amount = $movie->price;
