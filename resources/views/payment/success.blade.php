@@ -11,7 +11,7 @@
                     <div class="card-body text-center">
                         <h3 class="card-title">Płatność zakończona sukcesem.</h3>
                         <p class="card-text">Dziękujemy za dokonanie płatności.</p>
-                        <a href="{{ route('profile') }}" class="btn btn-primary">Powrót do profilu</a>
+                        <a href="{{ route('profile') }}" class="btn btn-primary btn-lg">Powrót do profilu</a>
                     </div>
                 </div>
             </div>

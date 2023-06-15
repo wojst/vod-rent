@@ -65,7 +65,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($orders as $order)
+                @foreach ($orders->sortByDesc('order_id') as $order)
                     <tr>
                         <td>{{ $order->order_id }}</td>
                         <td>{{ optional($order->user)->name ?? 'null' }}</td>

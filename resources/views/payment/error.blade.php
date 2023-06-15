@@ -11,7 +11,7 @@
                     <div class="card-body text-center">
                         <h3 class="card-title">Wystąpił błąd podczas płatności</h3>
                         <p class="card-text">Przepraszamy, ale wystąpił błąd podczas przetwarzania płatności. Prosimy spróbować ponownie.</p>
-                        <a href="{{ route('profile') }}" class="btn btn-primary">Powrót do profilu</a>
+                        <a href="{{ route('profile') }}" class="btn btn-primary btn-lg">Powrót do profilu</a>
                     </div>
                 </div>
             </div>

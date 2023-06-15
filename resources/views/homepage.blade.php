@@ -17,7 +17,7 @@
             <h2 class="text-center">Najpopularniejsze filmy dzisiaj</h2>
             <div class="row">
                 @foreach($topMovies as $movie)
-                <div class="col-md-4">
+                <div class="col-md-4 cik-lg-6 col-xl-4">
                     <div class="card">
                         <img src="{{ asset($movie->img_path) }}" class="card-img-top" alt="{{ $movie->title }}">
                         <div class="card-body">
@@ -44,7 +44,7 @@
             <br>
             <div class="row align-items-stretch">
                 @foreach($movies as $movie)
-                <div class="col-md-6 col-lg-6 col-xl-3 d-flex">
+                <div class="col-md-4 col-lg-6 col-xl-3 d-flex">
                     <div class="card flex-fill">
                         <img src="{{ asset($movie->img_path) }}" class="card-img-top" alt="obr1">
                         <div class="card-body d-flex flex-column">
@@ -75,7 +75,7 @@
         <br><br>
 
         <div class="d-grid gap-2 col-6 mx-auto">
-            <a href="{{ url('/ourmovies') }}" class="btn btn-primary">Więcej filmów</a>
+            <a href="{{ url('/ourmovies') }}" class="btn btn-primary btn-lg">Więcej filmów</a>
         </div>
 
         <br><br>
