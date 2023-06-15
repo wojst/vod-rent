@@ -16,53 +16,74 @@
         <div class="user-profile text-center">
             <h1 class="text-center">Profil użytkownika</h1>
             <br>
-            <div class="card">
-              <div class="card-body">
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="mb-3">
-                      <label for="name" class="form-label">Nazwa użytkownika:</label>
-                      <input type="text" class="form-control" id="name" value="{{ $user->name }}" readonly>
+            <div class="row">
+                <div class="col-md-6 d-flex">
+                    <div class="card flex-fill h-100">
+                        <div class="card-body">
+                            <h3>Dane użytkownika</h3>
+                            <table class="table">
+                                <tr>
+                                    <td>Nazwa użytkownika:</td>
+                                    <td>{{ $user->name }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Email:</td>
+                                    <td>{{ $user->email }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Liczba zamówień:</td>
+                                    <td>{{ $user->orders_count }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Karta lojalnościowa:</td>
+                                    <td>{{ $user->loyalty_card ? 'Tak' : 'Nie' }}</td>
+                                </tr>
+                            </table>
+                        </div>
                     </div>
-                    <div class="mb-3">
-                      <label for="email" class="form-label">Email:</label>
-                      <input type="email" class="form-control" id="email" value="{{ $user->email }}" readonly>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="mb-3">
-                      <label for="orders" class="form-label">Liczba zamówień:</label>
-                      <input type="number" class="form-control" id="orders" value="{{ $user->orders_count }}" readonly>
-                    </div>
-                    <div class="mb-3">
-                      <label for="loyalty-card" class="form-label">Karta lojalnościowa:</label>
-                      <input type="text" class="form-control" id="loyalty-card" value="{{ $user->loyalty_card ? 'Tak' : 'Nie' }}" readonly>
-                    </div>
-                  </div>
                 </div>
-              </div>
+                <div class="col-md-6 d-flex">
+                        <div class="card flex-fill h-100">
+                            <div class="card-body">
+                                <h3>Twoje "ulubione"</h3>
+                                <div>
+                                    <table class="table">
+                                        <tr>
+                                            <td>Nazwa:</td>
+                                            <td>
+                                                @if(isset($favMovieTitle))
+                                                    {{ $favMovieTitle }}
+                                                @else
+                                                    Brak danych
+                                                @endif
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Kategoria:</td>
+                                            <td>
+                                                @if(isset($favCategoryName))
+                                                    {{ $favCategoryName }}
+                                                @else
+                                                    Brak danych
+                                                @endif
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Aktor:</td>
+                                            <td>
+                                                @if(isset($favActor))
+                                                    {{ $favActor }}
+                                                @else
+                                                    Brak danych
+                                                @endif
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                </div>
             </div>
-
-            <div class="summary-section">
-                <h3>Twoje "ulubione"</h3>
-                    @if(isset($favMovieTitle))
-                        <p>Twój ulubiony film: {{ $favMovieTitle }}</p>
-                    @else
-                        <p>Twój ulubiony film: </p>
-                    @endif
-                    @if(isset($favCategoryName))
-                    <p> Twoja ulubiona kategoria: {{ $favCategoryName }}</p>
-                    @else
-                    <p>Twoja ulubiona kategoria: </p>
-                    @endif
-
-                    @if(isset($favActor))
-                        <p>Twój ulubiony aktor: {{ $favActor }}</p>
-                    @else
-                    <p>Twój ulubiony aktor: </p>
-                    @endif
-            </div>
-
 
             <div class="card mt-4 d-flex align-items-center justify-content-center">
                 <h2 class="text-center">Polecane dla ciebie</h2>
@@ -134,14 +155,8 @@
                     </table>
                 </div>
             </div>
-
           </div>
-
-
-
+        </div>
         <script src="js/bootstrap.bundle.js"></script>
     </body>
-
-
-
 </html>
