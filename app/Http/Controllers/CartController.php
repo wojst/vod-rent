@@ -91,16 +91,6 @@ class CartController extends Controller
             return redirect()->route('payment.error');
         } catch (\Exception $e) {
 
-            $order = Order::create([
-                'user_id' => auth()->user()->user_id,
-                'movie_id' => $movie->movie_id,
-                'rent_start' => now()->addHours(2),
-                'rent_end' => now()->addHours(2),
-                'cost' => $amount,
-                'code' => null,
-                'payment_status' => 'failed'
-            ]);
-
             return redirect()->route('payment.error');
         }
     }
