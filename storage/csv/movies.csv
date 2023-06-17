@@ -1,25 +1,25 @@
-1;Ojciec Chrzestny;Opowieść o nowojorskiej rodzinie mafijnej. Starzejący się Don Corleone pragnie przekazać władzę swojemu synowi.;Francis Ford Coppola;3;1972;0;img/movies/godfather.jpg
-2;Szeregowiec Ryan;W poszukiwaniu zaginionego szeregowca wysłany zostaje doborowy oddział żołnierzy. Czy uda się im wykonać zadanie?;Steven Spielberg;2;1998;0;img/movies/savingprivateryan.jpg
-3;Podziemny Krąg;Cierpiący na bezsenność mężczyzna poznaje gardzącego konsumpcyjnym stylem życia Tylera Durdena, który jest jego zupełnym przeciwieństwem.;David Fincher;5;1999;0;img/movies/fightclub.jpg
-4;Gladiator;Generał Maximus - prawa ręka cesarza, szczęliwy mąż i ojciec - w jednej chwili traci wszystko. Jako niewolnik-gladiator musi walczyć na arenie o przeżycie.;Ridley Scott;1;2000;0;img/movies/gladiator.jpg
-5;Matrix;Haker komputerowy Neo dowiaduje się od tajemniczych rebeliantów, że świat, w którym żyje, jest tylko obrazem przesyłanym do jego mózgu przez roboty.;Lily Wachowski;6;1999;0;img/movies/matrix.jpg
-6;Zielona mila;Emerytowany strażnik więzienny opowiada przyjaciółce o niezwykłym męczyźnie, którego skazano na śmierć za zabójstwo dwóch 9-letnich dziewczynek.;Frank Darabont;1;1999;0;img/movies/zielonamila.jpg
-7;Bad Boys;Marcus i Mike, policjanci z wydziału antynarkotykowego, mają trzy dni na odzyskanie skradzionej z depozytu heroiny wartej 100 mln dolarów.;Michael Bay;10;1995;0;img/movies/badboys.jpg
-8;Deadpool 2;Oszpecony przez eksperymenty Deadpool nadal walczy ze złem na swój niepowtarzalny sposób.;David Leitch;10;2018;0;img/movies/deadpool2.jpg
-9;Titanic;Rok 1912, brytyjski statek Titanic wyrusza w swój dziewiczy rejs do USA. Na pokładzie emigrant Jack przypadkowo spotyka arystokratkę Rose.;James Cameron;1;1997;0;img/movies/titanic.jpg
-10;Incepcja;Czasy, gdy technologia pozwala na wchodzenie w świat snów. Złodziej Cobb ma za zadanie wszczepić myśl do śpiącego umysłu.;Christopher Nolan;6;2010;0;img/movies/incepcja.jpg
-11;Siedem Dusz;Mężczyzna przedstawiający się jako urzędnik podatkowy pojawia się w domach śmiertelnie chorych dłużników. Ma dla nich dar.;Gabriele Muccino;1;2008;0;img/movies/siedemdusz.jpg
-12;Kac Vegas;Przyjaciele spędzają wieczór kawalerski w Las Vegas. Następnego dnia okazuje się, że zgubili pana młodego.;Todd Phillips;4;2009;0;img/movies/kacvegas.jpg
-13;Siedem;Dwóch policjantów stara się złapać seryjnego mordercę wybierającego swoje ofiary według specjalnego klucza.;David Fincher;9;1995;0;img/movies/siedem.jpg
-14;Bad Boys 2;Dwóch agentów jednostki antynarkotykowej z Miami stawia czoła bezwzględnemu przemytnikowi ecstasy.;Michael Bay;10;2003;0;img/movies/badboys2.jpg
-15;Wyspa Tajeminc;Szeryf stara się dowiedzieć, jak z celi w strzeżonym szpitalu dla chorych psychicznie przestępców zniknęła pacjentka.;Martin Scorsese;5;2010;0;img/movies/koddavinci.jpg
-16;Wilk z Wall Street;Historia Jordana Belforta, którego błyskawiczna droga na szczyt wzbudziły zainteresowanie FBI.;Martin Scorsese;4;2013;0;img/movies/wilkzwallstreet.jpg
-17;Joker;Strudzony życiem komik popada w obłęd i staje się psychopatycznym mordercą.;Todd Phillips;10;2019;0;img/movies/joker.jpg
-18;Sherlock Holmes;Detektyw Sherlock Holmes z przyjacielem dr. Watsonem szukają sprawcy rytualnych morderstw.;Guy Ritchie;13;2009;0;img/movies/sherlockholmes.jpg
-19;Iron Man;Tony Stark buduje supernowoczesną zbroję. Multimiliarder postanawia walczyć ze złem jako Iron Man.;Jon Favreau;10;2008;0;img/movies/ironman.jpg
-20;Mr. & Mrs. Smith;Para płatnych zabójców wiedzie monotonne małżeńskie życie. Niespodziewanie dostają zlecenie na siebie nawzajem.;Doug Liman;10;2005;0;img/movies/mrmssmith.jpg
-21;Krwawy Diament;Przemytnik z RPA i rybak wyruszają na poszukiwanie diamentu. Tłem akcji jest wojna domowa w Sierra Leone.;Edward Zwick;1;2006;0;img/movies/krwawydiament.jpg
-22;Ojciec Chrzestny II;Rok 1917. Młody Vito Corleone stawia pierwsze kroki w mafijnym Nowego Jorku. 40 lat później jego syn Michael walczy o interesy.;Francis Ford Coppola;3;1974;0;img/movies/godfather2.jpg
-23;Chłopcy z ferajny;Kilkunastoletni Henry i Tommy DeVito trafiają pod opiekę potęnego gangstera.;Martin Scorsese;3;1990;0;img/movies/chlopcyzferajny.jpg
-24;Deadpool;Były żołnierz oddziałów specjalnych zostaje poddany niebezpiecznemu eksperymentowi. Niebawem uwalnia swoje alter ego.;Tim Miller;10;2016;0;img/movies/deadpool.jpg
-25;Iron Man 2;Iron Man stawia czoło Iwanowi Wanko, znanemu jako Whiplash.;Jon Favreau;10;2010;0;img/movies/ironman2.jpg
+1;Ojciec Chrzestny;Opowieść o nowojorskiej rodzinie mafijnej. Starzejący się Don Corleone pragnie przekazać władzę swojemu synowi.;Francis Ford Coppola;3;1972;20.00;0;img/movies/godfather.jpg
+2;Szeregowiec Ryan;W poszukiwaniu zaginionego szeregowca wysłany zostaje doborowy oddział żołnierzy. Czy uda się im wykonać zadanie?;Steven Spielberg;2;1998;17.00;0;img/movies/savingprivateryan.jpg
+3;Podziemny Krąg;Cierpiący na bezsenność mężczyzna poznaje gardzącego konsumpcyjnym stylem życia Tylera Durdena, który jest jego zupełnym przeciwieństwem.;David Fincher;5;1999;18.00;0;img/movies/fightclub.jpg
+4;Gladiator;Generał Maximus - prawa ręka cesarza, szczęliwy mąż i ojciec - w jednej chwili traci wszystko. Jako niewolnik-gladiator musi walczyć na arenie o przeżycie.;Ridley Scott;1;2000;14.00;0;img/movies/gladiator.jpg
+5;Matrix;Haker komputerowy Neo dowiaduje się od tajemniczych rebeliantów, że świat, w którym żyje, jest tylko obrazem przesyłanym do jego mózgu przez roboty.;Lily Wachowski;6;1999;15.00;0;img/movies/matrix.jpg
+6;Zielona mila;Emerytowany strażnik więzienny opowiada przyjaciółce o niezwykłym męczyźnie, którego skazano na śmierć za zabójstwo dwóch 9-letnich dziewczynek.;Frank Darabont;1;1999;17.00;0;img/movies/zielonamila.jpg
+7;Bad Boys;Marcus i Mike, policjanci z wydziału antynarkotykowego, mają trzy dni na odzyskanie skradzionej z depozytu heroiny wartej 100 mln dolarów.;Michael Bay;10;1995;12.00;0;img/movies/badboys.jpg
+8;Deadpool 2;Oszpecony przez eksperymenty Deadpool nadal walczy ze złem na swój niepowtarzalny sposób.;David Leitch;10;2018;14.00;0;img/movies/deadpool2.jpg
+9;Titanic;Rok 1912, brytyjski statek Titanic wyrusza w swój dziewiczy rejs do USA. Na pokładzie emigrant Jack przypadkowo spotyka arystokratkę Rose.;James Cameron;1;1997;14.00;0;img/movies/titanic.jpg
+10;Incepcja;Czasy, gdy technologia pozwala na wchodzenie w świat snów. Złodziej Cobb ma za zadanie wszczepić myśl do śpiącego umysłu.;Christopher Nolan;6;2010;14.00;0;img/movies/incepcja.jpg
+11;Siedem Dusz;Mężczyzna przedstawiający się jako urzędnik podatkowy pojawia się w domach śmiertelnie chorych dłużników. Ma dla nich dar.;Gabriele Muccino;1;2008;12.00;0;img/movies/siedemdusz.jpg
+12;Kac Vegas;Przyjaciele spędzają wieczór kawalerski w Las Vegas. Następnego dnia okazuje się, że zgubili pana młodego.;Todd Phillips;4;2009;16.00;0;img/movies/kacvegas.jpg
+13;Siedem;Dwóch policjantów stara się złapać seryjnego mordercę wybierającego swoje ofiary według specjalnego klucza.;David Fincher;9;1995;14.00;0;img/movies/siedem.jpg
+14;Bad Boys 2;Dwóch agentów jednostki antynarkotykowej z Miami stawia czoła bezwzględnemu przemytnikowi ecstasy.;Michael Bay;10;2003;14.00;0;img/movies/badboys2.jpg
+15;Wyspa Tajeminc;Szeryf stara się dowiedzieć, jak z celi w strzeżonym szpitalu dla chorych psychicznie przestępców zniknęła pacjentka.;Martin Scorsese;5;2010;22.00;0;img/movies/koddavinci.jpg
+16;Wilk z Wall Street;Historia Jordana Belforta, którego błyskawiczna droga na szczyt wzbudziły zainteresowanie FBI.;Martin Scorsese;4;2013;18.00;0;img/movies/wilkzwallstreet.jpg
+17;Joker;Strudzony życiem komik popada w obłęd i staje się psychopatycznym mordercą.;Todd Phillips;10;2019;19.00;0;img/movies/joker.jpg
+18;Sherlock Holmes;Detektyw Sherlock Holmes z przyjacielem dr. Watsonem szukają sprawcy rytualnych morderstw.;Guy Ritchie;13;2009;15.00;0;img/movies/sherlockholmes.jpg
+19;Iron Man;Tony Stark buduje supernowoczesną zbroję. Multimiliarder postanawia walczyć ze złem jako Iron Man.;Jon Favreau;10;2008;15.00;0;img/movies/ironman.jpg
+20;Mr. & Mrs. Smith;Para płatnych zabójców wiedzie monotonne małżeńskie życie. Niespodziewanie dostają zlecenie na siebie nawzajem.;Doug Liman;10;2005;11.00;0;img/movies/mrmssmith.jpg
+21;Krwawy Diament;Przemytnik z RPA i rybak wyruszają na poszukiwanie diamentu. Tłem akcji jest wojna domowa w Sierra Leone.;Edward Zwick;1;2006;16.00;0;img/movies/krwawydiament.jpg
+22;Ojciec Chrzestny II;Rok 1917. Młody Vito Corleone stawia pierwsze kroki w mafijnym Nowego Jorku. 40 lat później jego syn Michael walczy o interesy.;Francis Ford Coppola;3;1974;21.00;0;img/movies/godfather2.jpg
+23;Chłopcy z ferajny;Kilkunastoletni Henry i Tommy DeVito trafiają pod opiekę potęnego gangstera.;Martin Scorsese;3;1990;18.00;0;img/movies/chlopcyzferajny.jpg
+24;Deadpool;Były żołnierz oddziałów specjalnych zostaje poddany niebezpiecznemu eksperymentowi. Niebawem uwalnia swoje alter ego.;Tim Miller;10;2016;16.00;0;img/movies/deadpool.jpg
+25;Iron Man 2;Iron Man stawia czoło Iwanowi Wanko, znanemu jako Whiplash.;Jon Favreau;10;2010;16.00;0;img/movies/ironman2.jpg

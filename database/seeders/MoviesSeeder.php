@@ -29,8 +29,9 @@ class MoviesSeeder extends Seeder
                 'director' => $values[3],
                 'category_id' => $values[4],
                 'release_year' => $values[5],
-                'rentals_count' => $values[6],
-                'img_path' => $values[7],
+                'price' => $values[6],
+                'rentals_count' => $values[7],
+                'img_path' => $values[8],
 
             ]);
         }

@@ -1,4 +1,4 @@
-%systemDrive%\xampp\mysql\bin\mysql -uroot -e
+%systemDrive%\xampp\mysql\bin\mysql -uroot -laravel
 
 php -r "copy('.env.example', '.env');"
 

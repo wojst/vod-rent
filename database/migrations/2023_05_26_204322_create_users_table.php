@@ -20,7 +20,7 @@ return new class extends Migration
             $table->integer('orders_count')->default(0);
             $table->boolean('loyalty_card')->default(false);
             $table->unsignedBigInteger('id_fav_category')->nullable();
-            $table->foreign('id_fav_category')->references('category_id')->on('categories');
+            $table->foreign('id_fav_category')->references('category_id')->on('categories')->onDelete('set null');
 
         });
     }

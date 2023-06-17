@@ -14,13 +14,15 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id('order_id');
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('user_id')->on('users');
-            $table->unsignedBigInteger('movie_id');
-            $table->foreign('movie_id')->references('movie_id')->on('movies');
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign('user_id')->references('user_id')->on('users')->onDelete('set null');
+            $table->unsignedBigInteger('movie_id')->nullable();
+            $table->foreign('movie_id')->references('movie_id')->on('movies')->onDelete('set null');
             $table->timestamp('rent_start');
             $table->timestamp('rent_end')->default(DB::raw('DATE_ADD(rent_start, INTERVAL 24 HOUR)'));
             $table->decimal('cost', 8, 2);
+            $table->string('code')->nullable();
+            $table->string('payment_status')->default('pending');
         });
     }
 

@@ -18,7 +18,7 @@ class Actor extends Model
     public function movies()
     {
         return $this->belongsToMany(Movie::class, 'movies_actors_transfer', 'actor_id', 'movie_id')
-            ->withPivot('actor_id', 'movie_id'); // Dodaj zdefiniowane kolumny pivot
+            ->withPivot('actor_id', 'movie_id');
     }
 }
 
