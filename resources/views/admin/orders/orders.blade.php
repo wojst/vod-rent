@@ -74,6 +74,7 @@
                         <td>{{ $order->rent_end }}</td>
                         <td>{{ $order->cost }}</td>
                         <td>{{ $order->code }}</td>
+                        <td>{{ $order->payment_status }}</td>
                         <td>
                             <form action="{{ route('orders.destroy', $order->order_id) }}" method="POST">
                                 @csrf

@@ -9,7 +9,7 @@
         @if(Session::has('success'))
             <div class="alert alert-success" role="alert">
                 {{ Session::get('success') }}
-                Twój 5-znakowy kod do wprowadzenia w naszej platformie streamingowej: <strong>{{ Session::get('transaction_code') }}</strong>
+                <strong>{{ Session::get('transaction_code') }}</strong>
             </div>
         @endif
 
@@ -39,6 +39,8 @@
                                     <td>{{ $user->loyalty_card ? 'Tak' : 'Nie' }}</td>
                                 </tr>
                             </table>
+
+                            <a href="{{ route('change-password') }}">Zmień hasło</a>
                         </div>
                     </div>
                 </div>
@@ -74,7 +76,7 @@
                                                 @if(isset($favActor))
                                                     {{ $favActor }}
                                                 @else
-                                                    Brak danych
+
                                                 @endif
                                             </td>
                                         </tr>

@@ -9,6 +9,7 @@ use App\Http\Controllers\MovieController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ActorController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ChangePasswordController;
 
 
 Route::get('/', [HomeController::class, 'homepage'])->name('homepage');
@@ -72,6 +73,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/payment/success', [CartController::class, 'success'])->name('payment.success');
     Route::get('/payment/error', [CartController::class, 'error'])->name('payment.error');
 
+    Route::get('/change-password', [ChangePasswordController::class, 'showChangePasswordForm'])->name('change-password');
+    Route::post('/change-password', [ChangePasswordController::class, 'changePassword'])->name('change-password.update');
 
 
 

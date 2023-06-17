@@ -23,10 +23,10 @@
                 <input type="email" name="email" id="email" class="form-control" value="{{ $user->email }}" required>
             </div>
 
-            <div class="mb-3">
+            {{-- <div class="mb-3">
                 <label for="password" class="form-label">Hasło:</label>
                 <input type="password" name="password" id="password" class="form-control" required>
-            </div>
+            </div> --}}
 
             <div class="mb-3">
                 <label for="admin_role" class="form-label">Rola administratora:</label>
