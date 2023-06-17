@@ -30,7 +30,7 @@ class CartController extends Controller
 
         $transactionCode = $this->generateTransactionCode();
 
-        Stripe::setApiKey('sk_test_51NDBgPDXAO4dSNxMc6e4OkwI6HJRJXBg7AvpaiKT8zROpe7WbIbgQUKaLvBJCqw7vdefzoj4JpBDA114nIFlxZ2q00aIpYsGxO');
+        Stripe::setApiKey(env('STRIPE_SECRET_KEY'));
 
         // Przetwarzanie płatności
         try {
