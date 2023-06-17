@@ -101,7 +101,7 @@ return new class extends Migration
                 FROM orders o
                 JOIN movies m ON o.movie_id = m.movie_id
                 WHERE o.user_id = p_user_id AND o.payment_status = 'succeed'
-                GROUP BY o.movie_id
+                GROUP BY o.movie_id, m.title
                 ORDER BY COUNT(*) DESC
                 LIMIT 1;
             END;

@@ -13,29 +13,33 @@
 
         @include('shared.carousel')
 
-        <div class="card mt-4">
-            <h2 class="text-center">Najpopularniejsze filmy dzisiaj</h2>
-            <div class="row">
-                @foreach($topMovies as $movie)
-                <div class="col-md-4 cik-lg-6 col-xl-4">
-                    <div class="card">
-                        <img src="{{ asset($movie->img_path) }}" class="card-img-top" alt="{{ $movie->title }}">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ $movie->title }}</h5>
-                            @if(Auth::check() && Auth::user()->admin_role)
-                                <p class="card-text">Popularność: {{ $movie->popularity }}</p>
-                            @endif
+        @if(count($topMovies) > 0)
+            <div class="card mt-4">
+                <h2 class="text-center">Najpopularniejsze filmy dzisiaj</h2>
+                <div class="row">
+                    @foreach($topMovies as $movie)
+                        <div class="col-md-4 cik-lg-6 col-xl-4">
+                            <div class="card">
+                                <img src="{{ asset($movie->img_path) }}" class="card-img-top" alt="{{ $movie->title }}">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ $movie->title }}</h5>
+                                    @if(Auth::check() && Auth::user()->admin_role)
+                                        <p class="card-text">Popularność: {{ $movie->popularity }}</p>
+                                    @endif
+                                </div>
+                                @if(Auth::check())
+                                    <a href="{{ route('summary', ['movie_id' => $movie->movie_id]) }}" class="btn btn-primary">Wypożycz</a>
+                                @else
+                                    <a href="{{ route('login') }}" class="btn btn-primary">Zaloguj się, aby wypożyczyć</a>
+                                @endif
                             </div>
-                        @if(Auth::check())
-                                <a href="{{ route('summary', ['movie_id' => $movie->movie_id]) }}" class="btn btn-primary">Wypożycz</a>
-                            @else
-                                <a href="{{ route('login') }}" class="btn btn-primary">Zaloguj się, aby wypożyczyć</a>
-                            @endif
-                    </div>
+                        </div>
+                    @endforeach
                 </div>
-                @endforeach
             </div>
-        </div>
+        @else
+            <p></p>
+        @endif
 
         <br><br>
 
