@@ -14,6 +14,4 @@ call php artisan migrate
 
 call php artisan db:seed
 
-call php artisan serve
-
 code .
