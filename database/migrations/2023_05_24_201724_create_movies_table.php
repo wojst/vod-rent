@@ -21,7 +21,7 @@ return new class extends Migration
             $table->year('release_year');
             $table->decimal('price', 8, 2)->default(20.00);
             $table->integer('rentals_count')->default(0);
-            $table->string('img_path');
+            $table->string('img_path')->nullable();
         });
     }
 

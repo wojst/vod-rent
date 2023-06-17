@@ -22,6 +22,26 @@ class MovieController extends Controller
 
     public function store(Request $request)
     {
+        // Dodawanie zdjęcia
+
+        $validatedData = $request->validate([
+            // walidacja innych pól formularza
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:400|dimensions:ratio=2/3',
+        ], [
+            'image.image' => 'Plik musi być obrazem.',
+            'image.mimes' => 'Dozwolone formaty plików to: jpeg, png, jpg, gif.',
+            'image.max' => 'Maksymalny rozmiar pliku to 400 kB.',
+            'image.dimensions' => 'Proporcje obrazu muszą wynosić 2:3.',]);
+
+        if ($request->hasFile('image')) {
+            $path = 'img/movies/';
+            $image = $request->file('image');
+            $imageName = $path . $image->getClientOriginalName();
+            $image->move(public_path('img/movies'), $imageName);
+        } else {
+            $imageName = null;
+        }
+
         $movie = Movie::create([
             'title' => $request->input('title'),
             'description' => $request->input('description'),
@@ -29,16 +49,17 @@ class MovieController extends Controller
             'category_id' => $request->input('category'),
             'release_year' => $request->input('release_year'),
             'price' => $request->input('price'),
-            'img_path' => $request->input('image'),
+            'img_path' => $imageName,
         ]);
 
         $actorIds = $request->input('actors');
 
         // Jeśli wybrano jakichś aktorów
         if ($actorIds) {
-            // Dodajemy wybranych aktorów do filmu
             $movie->actors()->attach($actorIds);
         }
+
+
 
         return redirect()->route('movies.index')->with('success', 'Film został dodany.');
     }
@@ -58,13 +79,34 @@ class MovieController extends Controller
     {
         $movie = Movie::findOrFail($id);
 
+        // Zmiana zdjęcia
+
+        if ($request->hasFile('image')) {
+            $validatedData = $request->validate([
+                // walidacja innych pól formularza
+                'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:400|dimensions:ratio=2/3',
+            ], [
+                'image.image' => 'Plik musi być obrazem.',
+                'image.mimes' => 'Dozwolone formaty plików to: jpeg, png, jpg, gif.',
+                'image.max' => 'Maksymalny rozmiar pliku to 400 kB.',
+                'image.dimensions' => 'Proporcje obrazu muszą wynosić 2:3.',]);
+
+
+                $path = 'img/movies/';
+                $image = $request->file('image');
+                $imageName = $path . $image->getClientOriginalName();
+                $image->move(public_path('img/movies'), $imageName);
+
+                $movie->img_path = $imageName;
+        }
+
         $movie->title = $request->input('title');
         $movie->description = $request->input('description');
         $movie->director = $request->input('director');
         $movie->category_id = $request->input('category');
         $movie->release_year = $request->input('release_year');
         $movie->price = $request->input('price');
-        $movie->img_path = $request->input('image');
+
 
         $movie->save();
 
@@ -78,6 +120,14 @@ class MovieController extends Controller
     public function destroy($id)
     {
         $movie = Movie::findOrFail($id);
+
+        // Usuwanie pliku ze zdjęciem
+        if (!empty($movie->img_path)) {
+            $filePath = public_path($movie->img_path);
+            if (file_exists($filePath)) {
+                unlink($filePath);
+            }
+        }
 
         $movie->actors()->detach();
         $movie->delete();

@@ -30,7 +30,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($actors as $actor)
+                @foreach($actors->sortByDesc('actor_id') as $actor)
                     <tr>
                         <td> {{$actor->actor_id}} </td>
                         <td>{{ $actor->actor_name }}</td>

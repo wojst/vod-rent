@@ -10,7 +10,7 @@
         <div class="container">
             <h1>Dodaj film</h1>
 
-            <form method="POST" action="{{ route('movies.store') }}">
+            <form method="POST" action="{{ route('movies.store') }}" enctype="multipart/form-data">
                 @csrf
 
                 <div class="mb-3">
@@ -61,8 +61,19 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="image" class="form-label">Ścieżka do obrazka:</label>
-                    <input type="text" name="image" id="image" class="form-control" required>
+                    <small class="text-muted">Nazwa pliku powinna być taka sama jak tytuł filmu, bez polskich znaków, spacji i znaków specjalnych. Przykład "Tytuł filmu 2" -> tytulfilmu2.jpg</small>
+                    <br>
+                    <label for="image" class="form-label">Zdjęcie:</label>
+                    <input type="file" name="image" id="image" class="form-control-file" accept="image/*">
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                 </div>
 
                 <button type="submit" class="btn btn-primary">Dodaj film</button>

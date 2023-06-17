@@ -10,7 +10,7 @@
         <div class="container mt-4">
             <h1>Edytuj film</h1>
 
-            <form method="POST" action="{{ route('movies.update', $movie->movie_id) }}">
+            <form method="POST" action="{{ route('movies.update', $movie->movie_id) }}" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
 
@@ -68,8 +68,17 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="image" class="form-label">Ścieżka do obrazka:</label>
-                    <input type="text" name="image" id="image" class="form-control" value="{{ $movie->img_path }}" required>
+                    <label for="image" class="form-label">Zdjęcie:</label>
+                    <input type="file" name="image" id="image" class="form-control-file" accept="image/*">
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                 </div>
 
                 <button type="submit" class="btn btn-primary">Zapisz zmiany</button>
