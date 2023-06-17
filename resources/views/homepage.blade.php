@@ -61,7 +61,7 @@
                                 @endphp
                             </p>
                             <p class="card-text">Reżyser: {{ $movie->director }}</p>
-                            <p class="card-text">Gatunek: {{ optional($movie->category)->category_name ?? 'null' }}</p>
+                            <p class="card-text">Gatunek: {{ optional($movie->category)->category_name ?? '' }}</p>
                             <p class="card-text">{{ $movie->release_year }}</p>
                             <h6 class="card-text">Cena: {{ $movie->price }} zł</h6>
                             @if(Auth::check())
