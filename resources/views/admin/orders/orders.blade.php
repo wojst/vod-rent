@@ -23,6 +23,7 @@
                         <th>Data zakończenia</th>
                         <th>Koszt</th>
                         <th>Kod</th>
+                        <th>Status płatności</th>
                         <th>Akcje</th>
                     </tr>
                 </thead>

@@ -56,6 +56,7 @@
             <a href="{{ route('users.index') }}" class="btn btn-secondary">Anuluj</a>
         </form>
     </div>
+    <br><br>
 
     <script src="js/bootstrap.bundle.js"></script>
 </body>
