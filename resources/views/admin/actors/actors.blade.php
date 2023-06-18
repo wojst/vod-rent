@@ -21,31 +21,33 @@
 
         <!-- Wyświetlanie aktorów -->
         <h2>Lista aktorów</h2>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>ID aktora</th>
-                    <th>Imię i nazwisko</th>
-                    <th>Akcje</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($actors->sortByDesc('actor_id') as $actor)
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
                     <tr>
-                        <td> {{$actor->actor_id}} </td>
-                        <td>{{ $actor->actor_name }}</td>
-                        <td>
-                            <form method="POST" action="{{ route('actors.destroy', $actor->actor_id) }}">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger">Usuń</button>
-                            </form>
-                            <a href="{{ route('actors.edit', $actor->actor_id) }}" class="btn btn-primary">Edytuj</a>
-                        </td>
+                        <th>ID aktora</th>
+                        <th>Imię i nazwisko</th>
+                        <th>Akcje</th>
                     </tr>
-                @endforeach
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @foreach($actors->sortByDesc('actor_id') as $actor)
+                        <tr>
+                            <td> {{$actor->actor_id}} </td>
+                            <td>{{ $actor->actor_name }}</td>
+                            <td>
+                                <form method="POST" action="{{ route('actors.destroy', $actor->actor_id) }}">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger">Usuń</button>
+                                </form>
+                                <a href="{{ route('actors.edit', $actor->actor_id) }}" class="btn btn-primary">Edytuj</a>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
     </div>
 
     <script src="js/bootstrap.bundle.js"></script>

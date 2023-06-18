@@ -82,6 +82,7 @@
                 </div>
 
                 <button type="submit" class="btn btn-primary">Zapisz zmiany</button>
+                <a href="{{ route('movies.index') }}" class="btn btn-secondary">Anuluj</a>
             </form>
         </div>
 

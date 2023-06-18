@@ -101,6 +101,13 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
+        $validatedData = $request->validate([
+            'email' => 'required|unique:users',
+            'password' => 'min:8'
+        ], ['email.unique' => 'Taki email już jest zajęty',
+            'password.min' => 'Hasło musi zawierać 8 znaków'
+        ]);
+
         $user = new User;
         $user->name = $request->input('name');
         $user->email = $request->input('email');
@@ -122,6 +129,11 @@ class UserController extends Controller
 
     public function update(Request $request, $id)
     {
+        $validatedData = $request->validate([
+            'email' => 'required|unique:users',
+        ], ['email.unique' => 'Taki email już jest zajęty'
+        ]);
+
         $user = User::findOrFail($id);
         $user->name = $request->input('name');
         $user->email = $request->input('email');

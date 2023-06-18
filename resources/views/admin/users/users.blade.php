@@ -38,42 +38,53 @@
                 <label for="admin_role" class="form-label">Rola administratora:</label>
                 <input type="checkbox" name="admin_role" id="admin_role" class="form-check-input">
             </div>
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             <button type="submit" class="btn btn-primary">Dodaj</button>
         </form>
 
         <!-- Wyświetlanie użytkowników -->
         <h2>Lista użytkowników</h2>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Nazwa użytkownika</th>
-                    <th>Email</th>
-                    <th>Rola administratora</th>
-                    <th>Liczba zamówień</th>
-                    <th>Karta lojalnościowa</th>
-                    <th>Akcje</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($users as $user)
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
                     <tr>
-                        <td>{{ $user->name }}</td>
-                        <td>{{ $user->email }}</td>
-                        <td>{{ $user->admin_role ? 'Tak' : 'Nie' }}</td>
-                        <td>{{ $user->orders_count }}</td>
-                        <td>{{ $user->loyalty_card }}</td>
-                        <td>
-                            <form method="POST" action="{{ route('users.destroy', $user->user_id) }}">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger">Usuń</button>
-                            </form>
-                            <a href="{{ route('users.edit', $user->user_id) }}" class="btn btn-primary">Edytuj</a>
-                        </td>
+                        <th>Nazwa użytkownika</th>
+                        <th>Email</th>
+                        <th>Rola administratora</th>
+                        <th>Liczba zamówień</th>
+                        <th>Karta lojalnościowa</th>
+                        <th>Akcje</th>
                     </tr>
-                @endforeach
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @foreach($users as $user)
+                        <tr>
+                            <td>{{ $user->name }}</td>
+                            <td>{{ $user->email }}</td>
+                            <td>{{ $user->admin_role ? 'Tak' : 'Nie' }}</td>
+                            <td>{{ $user->orders_count }}</td>
+                            <td>{{ $user->loyalty_card }}</td>
+                            <td>
+                                <form method="POST" action="{{ route('users.destroy', $user->user_id) }}">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger">Usuń</button>
+                                </form>
+                                <a href="{{ route('users.edit', $user->user_id) }}" class="btn btn-primary">Edytuj</a>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
     </div>
 
     <script src="js/bootstrap.bundle.js"></script>

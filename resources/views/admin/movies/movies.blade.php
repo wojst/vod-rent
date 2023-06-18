@@ -80,53 +80,54 @@
             </form>
 
             <h1>Lista filmów</h1>
-
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>ID filmu</th>
-                        <th>Tytuł</th>
-                        <th>Opis</th>
-                        <th>Obsada</th>
-                        <th>Reżyser</th>
-                        <th>Kategoria</th>
-                        <th>Rok produkcji</th>
-                        <th>Cena</th>
-                        <th>Ilość wypożyczeń</th>
-                        <th>Ścieżka do obrazka</th>
-                        <th>Akcje</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($movies->sortByDesc('movie_id') as $movie)
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
                         <tr>
-                            <td>{{ $movie->movie_id }}</td>
-                            <td>{{ $movie->title }}</td>
-                            <td>{{ $movie->description }}</td>
-                            <td>
-                                @php
-                                    $actors = $movie->actors->pluck('actor_name')->implode(', ');
-                                @endphp
-                                {{ $actors }}
-                            </td>
-                            <td>{{ $movie->director }}</td>
-                            <td>{{ optional($movie->category)->category_name ?? 'null' }}</td>
-                            <td>{{ $movie->release_year }}</td>
-                            <td>{{ $movie->price }}</td>
-                            <td>{{ $movie->rentals_count }}</td>
-                            <td>{{ $movie->img_path }}</td>
-                            <td>
-                                <a href="{{ route('movies.edit', $movie->movie_id) }}" class="btn btn-primary">Edytuj</a>
-                                <form method="POST" action="{{ route('movies.destroy', $movie->movie_id) }}" style="display: inline-block">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger">Usuń</button>
-                                </form>
-                            </td>
+                            <th>ID filmu</th>
+                            <th>Tytuł</th>
+                            <th>Opis</th>
+                            <th>Obsada</th>
+                            <th>Reżyser</th>
+                            <th>Kategoria</th>
+                            <th>Rok produkcji</th>
+                            <th>Cena</th>
+                            <th>Ilość wypożyczeń</th>
+                            <th>Ścieżka do obrazka</th>
+                            <th>Akcje</th>
                         </tr>
-                    @endforeach
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        @foreach($movies->sortByDesc('movie_id') as $movie)
+                            <tr>
+                                <td>{{ $movie->movie_id }}</td>
+                                <td>{{ $movie->title }}</td>
+                                <td>{{ $movie->description }}</td>
+                                <td>
+                                    @php
+                                        $actors = $movie->actors->pluck('actor_name')->implode(', ');
+                                    @endphp
+                                    {{ $actors }}
+                                </td>
+                                <td>{{ $movie->director }}</td>
+                                <td>{{ optional($movie->category)->category_name ?? 'null' }}</td>
+                                <td>{{ $movie->release_year }}</td>
+                                <td>{{ $movie->price }}</td>
+                                <td>{{ $movie->rentals_count }}</td>
+                                <td>{{ $movie->img_path }}</td>
+                                <td>
+                                    <a href="{{ route('movies.edit', $movie->movie_id) }}" class="btn btn-primary">Edytuj</a>
+                                    <form method="POST" action="{{ route('movies.destroy', $movie->movie_id) }}" style="display: inline-block">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger">Usuń</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
         </div>
 
 

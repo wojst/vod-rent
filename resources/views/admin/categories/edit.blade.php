@@ -17,8 +17,18 @@
                 <label for="category_name" class="form-label">Nazwa kategorii:</label>
                 <input type="text" name="category_name" id="category_name" class="form-control" value="{{ $category->category_name }}" required>
             </div>
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
 
             <button type="submit" class="btn btn-primary">Zapisz zmiany</button>
+            <a href="{{ route('categories.index') }}" class="btn btn-secondary">Anuluj</a>
         </form>
     </div>
 

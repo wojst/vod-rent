@@ -121,40 +121,42 @@
             <div class="card mt-4">
                 <div class="card-body">
                     <h3 class="card-title">Zamówienia użytkownika</h3>
-                    <table class="table table-hover">
-                        <thead>
-                            <tr>
-                                <th>Numer zamówienia</th>
-                                <th>Tytuł filmu</th>
-                                <th>Cena</th>
-                                <th>Data zamówienia</th>
-                                <th>Data końca wypożyczenia</th>
-                                <th>Kod</th>
-                                <th>Status płatności</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($orders->sortByDesc('rent_start') as $order)
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
                                 <tr>
-                                    <td>{{ $order->order_id }}</td>
-                                    <td>{{ $order->movie->title ?? 'null' }}</td>
-                                    <td>{{ $order->cost }}</td>
-                                    <td>{{ $order->rent_start }}</td>
-                                    <td>{{ $order->rent_end }}</td>
-                                    <td>{{ $order->code }}</td>
-                                    <td>
-                                        @if ($order->payment_status == 'succeed')
-                                          Zaakceptowana
-                                        @elseif ($order->payment_status == 'failed')
-                                          Odrzucona
-                                        @elseif ($order->payment_status == 'pending')
-                                          W trakcie
-                                        @endif
-                                      </td>
+                                    <th>Numer zamówienia</th>
+                                    <th>Tytuł filmu</th>
+                                    <th>Cena</th>
+                                    <th>Data zamówienia</th>
+                                    <th>Data końca wypożyczenia</th>
+                                    <th>Kod</th>
+                                    <th>Status płatności</th>
                                 </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                @foreach($orders->sortByDesc('rent_start') as $order)
+                                    <tr>
+                                        <td>{{ $order->order_id }}</td>
+                                        <td>{{ $order->movie->title ?? 'null' }}</td>
+                                        <td>{{ $order->cost }}</td>
+                                        <td>{{ $order->rent_start }}</td>
+                                        <td>{{ $order->rent_end }}</td>
+                                        <td>{{ $order->code }}</td>
+                                        <td>
+                                            @if ($order->payment_status == 'succeed')
+                                            Zaakceptowana
+                                            @elseif ($order->payment_status == 'failed')
+                                            Odrzucona
+                                            @elseif ($order->payment_status == 'pending')
+                                            W trakcie
+                                            @endif
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
           </div>

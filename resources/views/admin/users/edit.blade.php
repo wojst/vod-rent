@@ -42,6 +42,15 @@
                 <label for="loyalty_card" class="form-label">Karta lojalnościowa:</label>
                 <input type="checkbox" name="loyalty_card" id="loyalty_card" class="form-check-input">
             </div>
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
 
             <button type="submit" class="btn btn-primary">Zapisz zmiany</button>
             <a href="{{ route('users.index') }}" class="btn btn-secondary">Anuluj</a>
