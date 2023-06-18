@@ -84,7 +84,7 @@
 
         <br><br>
 
-        @include('shared.contactform')
+        @include('shared.down')
 
         <script src="js/bootstrap.bundle.js"></script>
     </body>

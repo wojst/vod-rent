@@ -76,7 +76,7 @@
                 </div>
             </div>
         </div>
-
+        @include('shared.down')
 
         <script>
             // Utworzenie element karty Stripe

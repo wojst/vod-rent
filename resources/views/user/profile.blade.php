@@ -159,6 +159,7 @@
             </div>
           </div>
         </div>
+        @include('shared.down')
         <script src="js/bootstrap.bundle.js"></script>
     </body>
 </html>
