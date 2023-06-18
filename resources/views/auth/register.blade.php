@@ -13,13 +13,13 @@
                     <form action="{{ route('register') }}" method="POST">@csrf
                       <!-- Email input -->
                       <div class="form-outline mb-4">
-                          <input type="text" id="name" name="name" class="form-control form-control-lg" />
+                          <input type="text" id="name" name="name" class="form-control form-control-lg" required/>
                           <label class="form-label" for="name">Nazwa użytkownika</label>
                       </div>
 
                       <!-- Email input -->
                       <div class="form-outline mb-4">
-                        <input type="email" id="email" name="email" class="form-control form-control-lg" />
+                        <input type="email" id="email" name="email" class="form-control form-control-lg" required/>
                         <label class="form-label" for="email">Email</label>
                         @error('email')
                         <span class="text-danger">{{ $message }}</span>
@@ -29,13 +29,13 @@
 
                       <!-- Password input -->
                       <div class="form-outline mb-4">
-                        <input type="password" id="password" name="password" class="form-control form-control-lg" />
+                        <input type="password" id="password" name="password" class="form-control form-control-lg" required/>
                         <label class="form-label" for="password">Hasło</label>
                       </div>
 
                       {{-- Password confirm input --}}
                       <div class="form-outline mb-4">
-                        <input type="password" id="password_confirmation" name="password_confirmation" class="form-control form-control-lg" />
+                        <input type="password" id="password_confirmation" name="password_confirmation" class="form-control form-control-lg" required/>
                         <label class="form-label" for="password_confirmation">Potwierdź hasło</label>
 
                         @error('password')

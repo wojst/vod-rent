@@ -52,12 +52,12 @@
 
                 <div class="mb-3">
                     <label for="release_year" class="form-label">Rok produkcji:</label>
-                    <input type="number" name="release_year" id="release_year" class="form-control" required>
+                    <input type="number" name="release_year" id="release_year" min="1900" max="2100" class="form-control" required>
                 </div>
 
                 <div class="mb-3">
                     <label for="price" class="form-label">Cena:</label>
-                    <input type="number" step="0.01" name="price" id="price" class="form-control" required>
+                    <input type="number" step="0.01" name="price" id="price" min="0" class="form-control" required>
                 </div>
 
                 <div class="mb-3">

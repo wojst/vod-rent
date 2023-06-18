@@ -16,6 +16,12 @@ class CategoryController extends Controller
 
     public function store(Request $request)
     {
+        $validatedData = $request->validate([
+            'category_name' => 'required|unique:categories',
+
+        ]);
+
+
         Category::create([
             'category_name' => $request->input('category_name')
         ]);

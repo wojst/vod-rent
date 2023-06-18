@@ -59,12 +59,12 @@
 
                 <div class="mb-3">
                     <label for="release_year" class="form-label">Rok produkcji:</label>
-                    <input type="number" name="release_year" id="release_year" class="form-control" value="{{ $movie->release_year }}" required>
+                    <input type="number" name="release_year" id="release_year" class="form-control" min="1900" max="2100" value="{{ $movie->release_year }}" required>
                 </div>
 
                 <div class="mb-3">
                     <label for="price" class="form-label">Cena:</label>
-                    <input type="number" step="0.01" name="price" id="price" class="form-control" value="{{ $movie->price }}" required>
+                    <input type="number" step="0.01" name="price" id="price" class="form-control" min="0" value="{{ $movie->price }}" required>
                 </div>
 
                 <div class="mb-3">

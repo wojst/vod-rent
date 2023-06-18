@@ -22,10 +22,10 @@ class MovieController extends Controller
 
     public function store(Request $request)
     {
-        // Dodawanie zdjęcia
+        // dodawanie zdjęcia
 
         $validatedData = $request->validate([
-            // walidacja innych pól formularza
+            // walidacja pól formularza
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:400|dimensions:ratio=2/3',
         ], [
             'image.image' => 'Plik musi być obrazem.',
@@ -41,6 +41,8 @@ class MovieController extends Controller
         } else {
             $imageName = null;
         }
+
+        // tworzenie nowego filmu
 
         $movie = Movie::create([
             'title' => $request->input('title'),
@@ -58,8 +60,6 @@ class MovieController extends Controller
         if ($actorIds) {
             $movie->actors()->attach($actorIds);
         }
-
-
 
         return redirect()->route('movies.index')->with('success', 'Film został dodany.');
     }
