@@ -14,12 +14,12 @@ class MoviesSeeder extends Seeder
      */
     public function run(): void
     {
-        $path = storage_path('csv/movies.csv');
-        $data = File::get($path);
-        $rows = explode("\n", $data);
+        $path = storage_path('csv/movies.csv'); // Ścieżka do pliku CSV zawierającego informacje o filmach
+        $data = File::get($path); // Wczytanie zawartości pliku CSV do zmiennej $data
+        $rows = explode("\n", $data); // Podział danych na wiersze na podstawie separatora nowej linii ("\n")
 
-        foreach ($rows as $row) {
-            $values = str_getcsv($row, ';');
+        foreach ($rows as $row) {  // dla wszystkich linijek w pliku .csv
+            $values = str_getcsv($row, ';'); // Podział wiersza na poszczególne wartości na podstawie separatora ";"
 
             // Dodawanie rekordu do tabeli movies
             DB::table('movies')->insert([

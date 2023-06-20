@@ -97,10 +97,10 @@ class CartController extends Controller
 
     private function generateTransactionCode()
     {
-        $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+        $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'; // łańcuch znaków, z którego będzie generowany kod
         $code = '';
         for ($i = 0; $i < 5; $i++) {
-            $code .= $characters[rand(0, strlen($characters) - 1)];
+            $code .= $characters[rand(0, strlen($characters) - 1)]; // losowanie 5 znaków
         }
         return $code;
     }

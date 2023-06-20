@@ -18,10 +18,10 @@
                 <input type="text" name="name" id="name" class="form-control" value="{{ $user->name }}" required>
             </div>
 
-            <div class="mb-3">
+            {{-- <div class="mb-3">
                 <label for="email" class="form-label">Email:</label>
                 <input type="email" name="email" id="email" class="form-control" value="{{ $user->email }}" required>
-            </div>
+            </div> --}}
 
             {{-- <div class="mb-3">
                 <label for="password" class="form-label">Hasło:</label>

@@ -101,6 +101,7 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
+        // walidacja danych
         $validatedData = $request->validate([
             'email' => 'required|unique:users',
             'password' => 'min:8'
@@ -108,6 +109,7 @@ class UserController extends Controller
             'password.min' => 'Hasło musi zawierać 8 znaków'
         ]);
 
+        //tworzenie nowego usera
         $user = new User;
         $user->name = $request->input('name');
         $user->email = $request->input('email');
@@ -136,10 +138,10 @@ class UserController extends Controller
 
         $user = User::findOrFail($id);
         $user->name = $request->input('name');
-        $user->email = $request->input('email');
-        if ($request->filled('password')) {
-            $user->password = bcrypt($request->input('password'));
-        }
+        // $user->email = $request->input('email');
+        // if ($request->filled('password')) {
+        //     $user->password = bcrypt($request->input('password'));
+        // }
         $user->admin_role = $request->has('admin_role');
         $user->orders_count = $request->input('orders_count');
         $user->loyalty_card = $request->has('loyalty_card');
