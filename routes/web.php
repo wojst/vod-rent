@@ -33,6 +33,17 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/summary/{movie_id}', [CartController::class, 'summary'])->name('summary');
 
+    //STRIPE
+    Route::post('/process-payment/{amount}/{movie}', [CartController::class, 'processPayment'])->name('process-payment');
+    Route::get('/payment/success', [CartController::class, 'success'])->name('payment.success');
+    Route::get('/payment/error', [CartController::class, 'error'])->name('payment.error');
+
+    Route::get('/change-password', [ChangePasswordController::class, 'showChangePasswordForm'])->name('change-password');
+    Route::post('/change-password', [ChangePasswordController::class, 'changePassword'])->name('change-password.update');
+
+});
+
+Route::middleware(['auth', 'admin'])->group(function () {
     //ADMIN FILMY
     Route::get('/movies', [MovieController::class, 'index'])->name('movies.index');
     Route::post('/movies', [MovieController::class, 'store'])->name('movies.store');
@@ -67,17 +78,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
     Route::post('/orders', [OrderController::class, 'store'])->name('orders.store');
     Route::delete('/orders/{order}', [OrderController::class, 'destroy'])->name('orders.destroy');
-
-    //STRIPE
-    Route::post('/process-payment/{amount}/{movie}', [CartController::class, 'processPayment'])->name('process-payment');
-    Route::get('/payment/success', [CartController::class, 'success'])->name('payment.success');
-    Route::get('/payment/error', [CartController::class, 'error'])->name('payment.error');
-
-    Route::get('/change-password', [ChangePasswordController::class, 'showChangePasswordForm'])->name('change-password');
-    Route::post('/change-password', [ChangePasswordController::class, 'changePassword'])->name('change-password.update');
-
-
-
 });
 
 
