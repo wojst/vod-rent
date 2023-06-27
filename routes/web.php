@@ -10,6 +10,8 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ActorController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ChangePasswordController;
+use App\Http\Controllers\ChangeEmailController;
+
 
 
 Route::get('/', [HomeController::class, 'homepage'])->name('homepage');
@@ -38,9 +40,13 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/payment/success', [CartController::class, 'success'])->name('payment.success');
     Route::get('/payment/error', [CartController::class, 'error'])->name('payment.error');
 
+    //zmiana hasła
     Route::get('/change-password', [ChangePasswordController::class, 'showChangePasswordForm'])->name('change-password');
     Route::post('/change-password', [ChangePasswordController::class, 'changePassword'])->name('change-password.update');
 
+    // zmiana emaila
+    Route::get('/change-email', [ChangeEmailController::class, 'showChangeEmailForm'])->name('change-email');
+    Route::post('/change-email', [ChangeEmailController::class, 'changeEmail'])->name('change-email');
 });
 
 Route::middleware(['auth', 'admin'])->group(function () {

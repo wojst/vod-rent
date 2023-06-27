@@ -57,6 +57,7 @@
                                         <button type="submit" class="btn btn-primary">
                                             Zmień hasło
                                         </button>
+                                        <a href="{{ route('profile') }}" class="btn btn-secondary">Powrót do profilu</a>
                                     </div>
                                 </div>
                             </form>

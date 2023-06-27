@@ -39,7 +39,8 @@
                                     <td>{{ $user->loyalty_card ? 'Tak' : 'Nie' }}</td>
                                 </tr>
                             </table>
-
+                            <a href="{{ route('change-email') }}">Zmień e-mail</a>
+                            <p></p>
                             <a href="{{ route('change-password') }}">Zmień hasło</a>
                         </div>
                     </div>

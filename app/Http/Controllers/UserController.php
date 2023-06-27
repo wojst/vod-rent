@@ -131,10 +131,10 @@ class UserController extends Controller
 
     public function update(Request $request, $id)
     {
-        $validatedData = $request->validate([
-            'email' => 'required|unique:users',
-        ], ['email.unique' => 'Taki email już jest zajęty'
-        ]);
+        // $validatedData = $request->validate([
+        //     'email' => 'required|unique:users',
+        // ], ['email.unique' => 'Taki email już jest zajęty'
+        // ]);
 
         $user = User::findOrFail($id);
         $user->name = $request->input('name');
