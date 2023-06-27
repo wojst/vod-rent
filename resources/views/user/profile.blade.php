@@ -39,9 +39,9 @@
                                     <td>{{ $user->loyalty_card ? 'Tak' : 'Nie' }}</td>
                                 </tr>
                             </table>
-                            <a href="{{ route('change-email') }}">Zmień e-mail</a>
-                            <p></p>
-                            <a href="{{ route('change-password') }}">Zmień hasło</a>
+                            <a href="{{ route('change-email') }}" class="btn btn-secondary">Zmień e-mail</a>
+
+                            <a href="{{ route('change-password') }}" class="btn btn-secondary">Zmień hasło</a>
                         </div>
                     </div>
                 </div>
