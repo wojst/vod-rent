@@ -1,3 +1,54 @@
+## About Project
+The application is an online movie rental service that allows users to browse and rent movies for a 24-hour period. After a successful rental, the user receives a randomly generated 5-character code, which is required to enter on the streaming platform.
+
+Users can create accounts, log in, browse available movies, access their profiles and data, make rentals, and view their rental history. If a user has a minimum of 10 orders on their account, they are automatically awarded a loyalty card, which grants a 10% discount on future rentals.
+
+Additionally, the administrator has the authority to manage movies, users, actors, orders, and movie categories. The administrator can manage these in an admin panel, which is only accessible to them.
+
+## Technologies and tools I used
+* PHP 8.2.4
+* Laravel 10.12.0
+* HTML 5
+* CSS 3
+* Bootstrap 5.2.3
+* JavaScript ES6
+* phpMyAdmin 5.2.1
+* Visual Studio Code 1.79.1
+* XAMPP Control Panel 3.3.0
+
+All these tools and technologies are free and were used legally
+
+## Setup
+To run the project you need:
+* XAMPP Control Panel
+* Composer
+* Visual Studio Code
+
+step 1:
+Run start.bat file
+
+step 2:
+Open the project in VSC
+
+step 3:
+Open a terminal and type:
+
+```
+$ php artisan serve
+```
+
+step 4:
+Go to address that showed in terminal output
+
+(It also needed to upload the Stripe key in an .env file for payment activities.)
+
+step 5: Log in
+Initially, there will be two users available. Here are the login details for individual accounts:
+* Admin: email: admin0@example.com, password: admin123.
+* User: email: user1@example.com, password: user123
+
+
+
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
