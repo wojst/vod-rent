@@ -8,6 +8,7 @@ Additionally, the administrator has the authority to manage movies, users, actor
 ## Technologies and tools I used
 * PHP 8.2.4
 * Laravel 10.12.0
+* SQL
 * HTML 5
 * CSS 3
 * Bootstrap 5.2.3
